@@ -1,0 +1,53 @@
+@import './root.css';
+
+body {
+    background-color: #fffaf5;
+    padding: 0 58px 0 58px;
+  }
+  
+  .about_page {
+    margin-top: 80px;
+    display: flex;
+    flex-direction: row;
+    gap: 72px;
+  }
+  .about_paragraph {
+    width: 50%;
+  }
+  
+  .about_title {
+    color: #241400;
+    font-family: var(--fontMons);
+    font-size: 36px;
+    font-weight: 900;
+    line-height: 196.187%; /* 70.627px */
+  }
+  
+  .about_text {
+    color: #241400;
+    font-family: var(--fontMons);
+    font-size: 18px;
+    line-height: 196.187%; /* 35.314px */
+  }
+  .about_img {
+    padding-top: 66px;
+    width: 570px;
+    height: 310px;
+    flex-shrink: 0;
+  }
+  
+  @media only screen and (max-width: 1200px) {
+    .about_page {
+      display: flex;
+      flex-direction: column-reverse;
+      align-items: center;
+      margin: 0;
+    }
+    body {
+      padding: 40px;
+    }
+    .about_paragraph {
+      text-align: center;
+    }
+  }
+  
