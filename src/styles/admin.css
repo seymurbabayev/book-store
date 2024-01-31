@@ -1,0 +1,76 @@
+@import "./root.css";
+
+body {
+    background-color: var(--mainColorRed);
+}
+
+.logo {
+    margin: 75px 0 0 35px;
+}
+
+/* Login */
+
+.login-container {
+    padding: 70px 54px 34px 54px;
+    margin: 140px auto;
+    background-color: #fff;
+    max-width: 544px;
+    font-family: "Crimson Text", serif;
+    font-size: 19px;
+}
+.login-container_title {
+    font-family: var(--fontMons);
+    font-size: 2.75rem;
+    font-weight: 700;
+    color: #000;
+    text-align: center;
+    margin-bottom: 32px;
+}
+.login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 34px;
+}
+.login-form input {
+    border: 1px solid #cecece;
+    padding: 18px 51px;
+}
+
+.login-form_btn {
+    font-weight: 700;
+    background-color: var(--mainColorOrange);
+    color: #fff;
+    border: 1px solid #cecece;
+    border-radius: 5px;
+    margin-top: 50px;
+    padding: 20px 0;
+}
+
+/* Tablet and Mobile screens */
+@media only screen and (max-width: 576px){
+    .logo {
+        width: min(50%, 283px);
+        margin: 10px 0 0 15px;
+    }
+    .login-container {
+        margin: 95px auto;
+        width: 80%;
+        padding: 27px 18px;
+    }
+    .login-form {
+        gap: 22px;
+    }
+    .login-container_title {
+        margin: 12px 24px;
+        font-size: 1.25rem;
+    }
+    .login-form input {
+        padding: 12px;
+    }
+    .login-form_btn {
+        font-size: 1.125rem;
+        margin-top: unset;
+        padding: 10px 0;
+    }
+    
+}
