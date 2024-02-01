@@ -1,4 +1,5 @@
-@import './font.css';
+
+  @import './font.css';
 
 :root {
     --mainColorDarkRed: #391f00;
@@ -8,7 +9,7 @@
     --mainColorText: #241400;
     --mainBorderColor: #e6e7e9c2;
     --mainBodyColor: #fffaf5;
-    
     --fontRoboto: "Roboto", sans-serif;
     --fontMons: "Montserrat", sans-serif;
+    --fontCrim: 'Crimson Text', serif;
   }
