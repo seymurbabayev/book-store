@@ -5,7 +5,8 @@
 
 body {
   font-family: var(--fontMontserrat);
-  background-color: var(--mainColor);
+  background-color: var(--mainBodyColor) !important;
+  /* background: #FFFAF5;; */
   margin: auto;
 }
 
