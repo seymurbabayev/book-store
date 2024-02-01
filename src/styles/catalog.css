@@ -1,4 +1,7 @@
 @import './root.css';
+@import './header.css';
+@import'./footer.css';
+
 
 body{
   background-color: #FFFAF5;
