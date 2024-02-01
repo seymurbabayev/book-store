@@ -95,6 +95,7 @@ body {
     position: relative;
     border-radius: 6px;
     left: 30px;
+    
   }
 
   .comment_container img {
@@ -112,7 +113,7 @@ body {
     border-radius: 5px;
     background: #fff;
     box-shadow: 2px 4px 4px 2px rgba(0, 0, 0, 0.25);
-    width: 580px;
+    max-width: 580px;
     height: 167px;
     color: #232323;
    
