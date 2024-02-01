@@ -3,6 +3,10 @@
 @import './footer.css';
 
 
+body{
+  background-color: var(--mainBodyColor);
+}
+
 .search-sec {
     width: 80%;
     margin: 10% 16%;
