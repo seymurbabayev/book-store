@@ -81,6 +81,12 @@ main{
     margin: 0 0 80px 77px;
 
 }
+.rating{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  
+}
 
 .input-comment{
     width: 686px;
@@ -154,3 +160,60 @@ html.is-changing .transition-fade {
   html.is-animating .transition-fade {
     opacity: 0;
   }
+
+.rate{
+    position: relative;
+    right: 356px;
+}
+.rate:not(:checked) > input {
+    position:absolute;
+    top:-9999px;
+}
+.rate:not(:checked) > label {
+    float:right;
+    width:1em;
+    overflow:hidden;
+    white-space:nowrap;
+    cursor:pointer;
+    font-size:30px;
+    color:#ccc;
+}
+.rate:not(:checked) > label:before {
+    content: '★ ';
+}
+.rate > input:checked ~ label {
+    color: #ffc700;    
+}
+.rate:not(:checked) > label:hover,
+.rate:not(:checked) > label:hover ~ label {
+    color: #deb217;  
+}
+.rate > input:checked + label:hover,
+.rate > input:checked + label:hover ~ label,
+.rate > input:checked ~ label:hover,
+.rate > input:checked ~ label:hover ~ label,
+.rate > label:hover ~ input:checked ~ label {
+    color: #c59b08;
+}
+
+/* RESPONSIVE */
+
+
+@media only screen and (max-width: 1200px){
+
+    main{
+        padding: 0;
+        margin: 80px 0 0 0;
+    }
+    .section1-content{
+        margin-top: 80px;
+        display: flex;
+        flex-wrap: wrap-reverse;
+    }
+    .description{
+        text-align: center;
+    }
+    .section-2{
+        display: none;
+    }
+}
