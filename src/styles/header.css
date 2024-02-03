@@ -45,6 +45,7 @@ header{
     background: #fffaf5;
     cursor: pointer;
 }
+
 .modal-join{
     display: none;
 }
@@ -102,6 +103,7 @@ header{
     background: #FFF;
     outline: none;
 
+  
     /* input text style */
     color: #797667;
     font-size: 19px;
