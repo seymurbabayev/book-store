@@ -45,7 +45,6 @@ header{
     background: #fffaf5;
     cursor: pointer;
 }
-
 .modal-join{
     display: none;
 }
@@ -102,7 +101,8 @@ header{
     border: 1px solid #CECECE;
     background: #FFF;
     outline: none;
-   
+
+    /* input text style */
     color: #797667;
     font-size: 19px;
     font-style: normal;
@@ -124,6 +124,7 @@ header{
     border: 1px solid #CECECE;
     background: #E16A00;
     height: 76px;
+
     color: #FFF;
     font-size: 19px;
     font-style: normal;
@@ -131,3 +132,4 @@ header{
     line-height: normal;
     cursor: pointer;
 }
+
