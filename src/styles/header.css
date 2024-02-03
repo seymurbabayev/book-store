@@ -42,8 +42,7 @@ header{
     justify-content: center;
     gap: 6px;
     border: 0;
-<<<<<<< HEAD
-    background: #FFFAF5;
+    background: #fffaf5;
     cursor: pointer;
 }
 
@@ -130,8 +129,5 @@ header{
     font-style: normal;
     font-weight: 700;
     line-height: normal;
-=======
-    background: #fffaf5;
->>>>>>> origin/home-page
     cursor: pointer;
 }
