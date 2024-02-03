@@ -1,6 +1,6 @@
-
+@import './root.css';
 header{
-    font-family: 'Montserrat', sans-serif;
+    font-family: var(--fontMons);
     width: 100%;
     background: #fffaf5;
     padding-top: 31px;
