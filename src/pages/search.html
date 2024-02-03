@@ -46,15 +46,46 @@
     <main class="src-cont">
     
       <section class="search-sec">
-        <h2>Search</h2>
-        <div class="search-main">
-            <div class="search-form">
-                <form action="">
-                    <input type="text" id="search_input" placeholder="Order in Chaos">
-                    <button id="search_button">Search</button>
-                </form>
-            </div>
-        </div>
+        <div class="main-section">
+          <div class="search-line">
+          <h1 class="search-title">Search</h1>
+          <input class="input-search" type="text" placeholder="Order in Chaos">
+          <button class="btn-search">Search</button>
+          </div>
+        <div class="arrows">
+          <button class="arrow-btn " onclick="previousSlide()"><img src="../assets/images/arrow-left.svg" alt=""></button>
+      <div  id="slider" class="slider">
+          <div class="texts">
+          <img src="../assets/images/searchbook.svg" alt="">
+          <div>
+          <h3>Order in Chaos</h3>
+          <p>Konstantin Koptelov</p>
+          <p class="book-text">We work without holidays and weekends! Residents of Kiev can receive an order
+               on the day of its registration. Customers from other cities of Ukraine can receive
+                an order within 1-5 days, depending on the location of the settlement and the selected
+                 delivery method. Orders over UAH 1000 are delivered  free of charge *. You can see the available
+                  methods, exact terms and cost of delivery during checkout in the order basket, after selecting the delivery city   </p>
+                  </div>
+          </div>
+      </div>
+      <div id="slider" class="slider">
+          <div class="texts">
+          <img src="../assets/images/searchbook.svg" alt="">
+          <div>
+          <h3>War and Piece</h3>
+          <p>Lev Tolstoy</p>
+          <p class="book-text">We work without holidays and weekends! Residents of Kiev can receive an order
+               on the day of its registration. Customers from other cities of Ukraine can receive
+                an order within 1-5 days, depending on the location of the settlement and the selected
+                 delivery method. Orders over UAH 1000 are delivered  free of charge *. You can see the available
+                  methods, exact terms and cost of delivery during checkout in the order basket, after selecting the delivery city   </p>
+                  </div>
+          </div>        
+      </div>
+      
+      <button class="arrow-btn" onclick="nextSlide()"><img src="../assets/images/arrow-right.svg" alt=""></button>
+      
+  </div>
     </section>
     </main>
   
@@ -115,6 +146,6 @@
         All rights reserved © 2003-2021 LIBRARY TERMS OF USE | Privacy Policy
       </p>
     </footer>
-  
+  <script src="../js/search.js"></script>
   </body>
   </html>
