@@ -6,10 +6,9 @@
 body {
   font-family: var(--fontMontserrat);
   background-color: var(--mainBodyColor) !important;
-<<<<<<< HEAD
+
   background: #fffaf5;
-=======
->>>>>>> origin/home-page
+
   margin: auto;
 }
 
