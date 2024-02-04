@@ -1,0 +1,135 @@
+@import './root.css';
+@import './header.css';
+@import './footer.css';
+
+
+body{
+  background-color: var(--mainBodyColor);
+}
+
+.search-sec {
+    width: 80%;
+    margin: 10% 16%;
+  }
+  
+  .search-sec h2 {
+    font-size: 36px;
+    font-family: "Montserrat";
+    color: #241400;
+    font-weight: 700;
+    line-height: 70.63px;
+  }
+  
+  .search-main {
+    display: flex;
+  }
+  
+  .search-form {
+    width: 40%;
+    margin-right: 25px;
+    margin-top: 20px;
+  }
+  
+  .search-form form {
+    display: flex;
+    flex-direction: column;
+    width: 90%;    
+  }
+  
+  .search-form input {
+    padding-left: 27px;
+    height: 69px;
+    border: 1px solid rgba(206, 206, 206, 1);
+    border-radius: 5px;
+    margin: 44px 0;
+    font-size: 23px;
+  }
+  
+  .search-form input::placeholder {
+    color: #241400;
+    font-size: 23px;
+    font-family: Crimson Text;
+  }
+  
+  .search-form button {
+    height: 65px;
+    border: none;
+    border-radius: 5px;
+    background-color: #e16a00;
+    color: #fff;
+    font-size: 30px;
+    font-family: Crimson Text;
+  }
+  
+  
+  
+  @media screen and (max-width:1250px){
+    .search-sec {
+        width: 80%;
+         margin: 0 auto;
+         margin-top: 134px;
+    }
+  
+    .search-main {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }  
+  
+    .search_section h2 {
+        text-align: center;
+    }
+    
+    .search-form {
+        width: 70%;
+    }
+  
+    .search-form form {
+        margin: 0 auto;        
+    }
+  
+  }
+  
+  @media screen and (max-width:768px){
+   
+    .search-form {
+        width: 100%;
+    }
+  
+  .slider.slider_search {
+    position: relative;
+    width: 60%;
+  }
+  
+  #left-search {
+    position: absolute;
+    left: -30px;
+    top: 50%;
+  }
+  
+  #right-search {
+    position: absolute;
+    right: -30px;
+    top: 50%;
+  }
+   
+  
+  #list_search {
+    display: flex;
+    width: max-content;
+  }
+  
+  #formList_search {
+    width: 1280px;
+    max-width: 100%;
+    overflow: auto;
+    margin: 50px auto 50px;
+    scroll-behavior: smooth;
+    scroll-snap-type: both;
+  }
+  
+  #formList_search::-webkit-scrollbar {
+    display: none;
+  }
+  
+  }
