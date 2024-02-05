@@ -73,20 +73,20 @@
                     <div class="search-block">
                         <h3 class="section-subtitle">Search book</h3>
                         <div>
-                            <input placeholder="Search criteria" type="text" />
-                            <button class="search-btn">
+                            <input id="srcInput" placeholder="Search criteria" type="text" />
+                            <button id="srcBtn" class="search-btn">
                                 <img src="../assets/images/search-icon.svg" alt="search icon" />
                             </button>
                         </div>
-                        <div class="search-results">
-                            <div class="search-result">
+                        <div id="srcResult" class="search-results">
+                            <!-- <div class="search-result">
                                 <img src="../assets/images/clock-icon.svg" alt="clock icon" />
                                 <p>Dan Brown</p>
                             </div>
                             <div class="search-result">
                                 <img src="../assets/images/clock-icon.svg" alt="clock icon" />
                                 <p>Dan Brown</p>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                     <div class="book-form-container">
@@ -312,5 +312,6 @@
                 </section>
             </main>
         </div>
+        <script src="../js/firebase.js"></script>
     </body>
 </html>
