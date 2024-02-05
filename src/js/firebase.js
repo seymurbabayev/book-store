@@ -23,11 +23,15 @@ async function myPromise(bookTitle){
         const response = await fetch(url);
         const data = await response.json()
         renderItem(data)
+        srcResult.style.backgroundColor = "#f1f0f0";
+        srcResult.style.height = "250px"
     }catch(err){
         console.log(err);
-        srcResult.style.backgroundColor = "#d9534f";
+        if(err){srcResult.style.backgroundColor = "#d9534f";
         srcResult.style.height = "100px"
         srcResult.innerHTML = `Book is not found: ${bookTitle}`
+    }
+
     }
 }
 
