@@ -4,9 +4,12 @@
 
 body {
     background-color: #fffaf5;
-    padding: 0 58px 0 58px;
+    
   }
   
+  main{
+    padding: 0 58px 0 80px;
+  }
   .about_page {
     margin-top: 80px;
     display: flex;
@@ -46,7 +49,7 @@ body {
       margin: 0;
     }
     body {
-      padding: 40px;
+      padding:0;
     }
     .about_paragraph {
       text-align: center;
