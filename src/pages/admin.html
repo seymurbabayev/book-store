@@ -78,22 +78,17 @@
                                 <img src="../assets/images/search-icon.svg" alt="search icon" />
                             </button>
                         </div>
-                        <ul id="srcResult" class="search-results d-flex flex-column">
-                            
-                            <!-- <div class="search-result"> -->
-   
-    
-                            <!-- </div> -->
-                            <!-- <div class="search-result"> -->
-                            <!-- <img src="../assets/images/clock-icon.svg" alt="clock icon" /> -->
-                            <!-- <div class="d-flex flex-column"> -->
-                            <!-- <button id="bookResult" onclick="myFunction()" class="srcrslts"> -->
-                                <!-- <p>${item.volumeInfo.title}</p> -->
-                                <!-- <p>${item.volumeInfo.authors}</p> -->
-                                <!-- </button> -->
-                                <!-- </div> -->
-                            <!-- </div> -->
-                            </ul>
+                        <div  id="srcResult" class="search-results d-flex flex-column">
+                            <ul id="srcList">
+                            <li class="result-search">
+                                <!-- <span><i class="far fa-clock"></i></span>
+                                <span>Dan Brown</span>
+                                <span>Book name</span> -->
+
+                            </li>
+                           
+                        </ul>
+                        </div>
                     </div>
                     <div class="book-form-container">
                         <h3 class="section-subtitle">Book form</h3>
@@ -318,6 +313,6 @@
                 </section>
             </main>
         </div>
-        <script src="../js/firebase.js"></script>
+        <script type="module" src="../js/firebase.js"></script>
     </body>
 </html>

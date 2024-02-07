@@ -156,6 +156,12 @@ main {
     gap: 1.5rem;
     width: 15px;
 }
+.book-btn{
+    border: none;
+    display: flex;
+    gap: 10px;
+}
+
 .search-result p {
     margin: 0;
     font-family: "Preahvihear", sans-serif;
