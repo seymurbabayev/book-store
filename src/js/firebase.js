@@ -10,7 +10,14 @@ const bookTitle = document.querySelector("#bookTitle");
 const bookAuthor = document.querySelector("#bookAuthor");
 const bookImage = document.querySelector("#bookImage");
 const bookDesc = document.querySelector("#bookDesc");
-const addBtn = document.querySelector("#addBtn")
+const addBtn = document.querySelector("#addBtn");
+const ylwBtnAdd = document.querySelector("#ylwBtnAdd");
+// book type
+const addType = document.querySelector("#addType");
+const closeBtn = document.querySelector("#closeBtn");
+const bookTypeInput = document.querySelector("#bookTypeInput");
+const typeAddBtn = document.querySelector("#typeAddBtn");
+const bookTypeList = document.querySelector("#bookTypeList")
 
 
 // search function start
@@ -113,7 +120,7 @@ const createData = (path, data) => {
     const myNewData = newData.map((kicikArr) => {
       const newObj = {
         id: kicikArr[0],
-        ...kicikArr[1],
+        name:kicikArr[1]
       };
   
       return newObj;
@@ -139,15 +146,15 @@ const createData = (path, data) => {
   const deleteData = (path) => {
     return remove(ref(database, path));
   };
-  const isHomePage = window.location.pathname.includes("index.html");
-  if (isHomePage) {
+ 
     readData("/books")
       .then((data) => {
         const books = convertData(data);
-        renderBooks(books);
+        console.log(Object.keys(books[1]));
+       
       })
       .catch((error) => console.error("Error reading data:", error));
-  };
+  
   srcList.addEventListener("click", async (e)=>{
     const bookID = e.target.value;
     const bookForm = await getBookByID(bookID)
@@ -155,10 +162,46 @@ const createData = (path, data) => {
     bookAuthor.value = bookForm.volumeInfo.authors.toString()
     bookImage.value = bookForm.volumeInfo.imageLinks.thumbnail
     bookDesc.value = bookForm.volumeInfo.description
+    bookTypeInput.value = 
     srcResult.style.display = 'none'
     srcInput.value = '';
     
+    addBtn.addEventListener("click", function(e){
+      e.preventDefault();
+      createData("books", bookForm);
+      alert("added")
+  });
+});
+
+
+ylwBtnAdd.addEventListener("click", function(e){
+  e.preventDefault();
+  addType.style.visibility = "visible"; 
+});
+closeBtn.addEventListener("click", function(e){
+  e.preventDefault();
+  addType.style.visibility = "hidden"; 
+});
+
+typeAddBtn.addEventListener("click",()=>{
+  const value = bookTypeInput.value;
+  bookTypeInput.value = '';
+  createData("category", value);
+  alert("Category Added!");
+  readData("/category")
+  .then((data) =>{
+    const categorys = convertData(data);
+    console.log(categorys);
+    bookTypeList.innerHTML =categorys.map(item =>
+      ` <option value="fantastic" selected>${item.name}</option>`
+      )
+    
+  })
+  .catch((error) => console.error("Error reading data:", error));
 })
+
+
+
 
 
 

@@ -138,15 +138,15 @@
                             </div>
                             <div class="d-flex flex-column align-items-start gap-2">
                                 <label for="bookType">Book type</label>
-                                <button class="btn btn-sm btn-warning">+</button>
-                                <div class="add-type d-flex gap-3">
-                                    <input type="text" class="form-control" />
-                                    <button type="button" class="btn btn-outline-success">Add</button>
-                                    <button type="button" class="btn btn-outline-danger">Close</button>
+                                <button id="ylwBtnAdd" class="btn btn-sm btn-warning">+</button>
+                                <div id="addType" class="add-type d-flex gap-3 ">
+                                    <input id="bookTypeInput" type="text" class="form-control" />
+                                    <button id="typeAddBtn" type="button" class="btn btn-outline-success">Add</button>
+                                    <button id="closeBtn" type="button" class="btn btn-outline-danger">Close</button>
                                 </div>
-                                <select id="bookType" class="form-select form-select-sm mb-3">
-                                    <option value="fantastic" selected>Fantastic</option>
-                                    <option value="classic">Classic</option>
+                                <select id="bookTypeList" class="form-select form-select-sm mb-3">
+                                    <!-- <option value="fantastic" selected>Fantastic</option>
+                                    <option value="classic">Classic</option> -->
                                 </select>
                             </div>
                             <button id="addBtn" class="add-btn" type="submit">Add</button>
