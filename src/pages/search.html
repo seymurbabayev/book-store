@@ -67,11 +67,13 @@
         <div class="main-section">
           <div class="search-line">
           <h1 class="search-title">Search</h1>
-          <input class="input-search" type="text" placeholder="Order in Chaos">
-          <button class="btn-search">Search</button>
+
+          <input  id="search_input" class="input-search" type="text" placeholder="Order in Chaos">
+          <button id="search_button" class="btn-search">Search</button>
+
           </div>
         <div class="arrows">
-          <button class="arrow-btn " onclick="previousSlide()"><img src="../assets/images/arrow-left.svg" alt=""></button>
+          <button  id="prev_search" class="arrow-btn " onclick="previousSlide()"><img src="../assets/images/arrow-left.svg" alt=""></button>
       <div  id="slider" class="slider">
           <div class="texts">
           <img src="../assets/images/searchbook.svg" alt="">
@@ -89,9 +91,9 @@
       <div id="slider" class="slider">
           <div class="texts">
           <img src="../assets/images/searchbook.svg" alt="">
-          <div>
+          <div class="content-slider-search">
           <h3>War and Piece</h3>
-          <p>Lev Tolstoy</p>
+          <p class="book-name">Lev Tolstoy</p>
           <p class="book-text">We work without holidays and weekends! Residents of Kiev can receive an order
                on the day of its registration. Customers from other cities of Ukraine can receive
                 an order within 1-5 days, depending on the location of the settlement and the selected
@@ -101,7 +103,7 @@
           </div>        
       </div>
       
-      <button class="arrow-btn" onclick="nextSlide()"><img src="../assets/images/arrow-right.svg" alt=""></button>
+      <button id="next_search" class="arrow-btn" onclick="nextSlide()"><img src="../assets/images/arrow-right.svg" alt=""></button>
       
   </div>
     </section>
@@ -167,5 +169,6 @@
     
     <script src="../js/search.js"></script>  
     <script src="../js/joinus.js"></script>
+    <script type="module" src="../js/searchpage.js"></script>
   </body>
   </html>
