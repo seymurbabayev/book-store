@@ -190,6 +190,9 @@ form select {
     border: none;
     background: none;
 }
+.add-type{
+    visibility: hidden;
+}
 .add-btn {
     padding: 12px;
     margin: 8px 0;
