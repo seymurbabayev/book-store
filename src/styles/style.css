@@ -6,6 +6,9 @@
 body {
   font-family: var(--fontMons);
   background-color: var(--mainBodyColor) !important;
+
+  background: #fffaf5;
+
   margin: auto;
 }
 

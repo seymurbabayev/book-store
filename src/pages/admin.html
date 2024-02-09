@@ -78,15 +78,16 @@
                                 <img src="../assets/images/search-icon.svg" alt="search icon" />
                             </button>
                         </div>
-                        <div id="srcResult" class="search-results">
-                            <!-- <div class="search-result">
-                                <img src="../assets/images/clock-icon.svg" alt="clock icon" />
-                                <p>Dan Brown</p>
-                            </div>
-                            <div class="search-result">
-                                <img src="../assets/images/clock-icon.svg" alt="clock icon" />
-                                <p>Dan Brown</p>
-                            </div> -->
+                        <div  id="srcResult" class="search-results d-flex flex-column">
+                            <ul id="srcList">
+                            <li class="result-search">
+                                <!-- <span><i class="far fa-clock"></i></span>
+                                <span>Dan Brown</span>
+                                <span>Book name</span> -->
+
+                            </li>
+                           
+                        </ul>
                         </div>
                     </div>
                     <div class="book-form-container">
@@ -148,7 +149,7 @@
                                     <option value="classic">Classic</option>
                                 </select>
                             </div>
-                            <button class="add-btn" type="submit">Add</button>
+                            <button id="addBtn" class="add-btn" type="submit">Add</button>
                         </form>
                     </div>
                 </section>
@@ -312,6 +313,6 @@
                 </section>
             </main>
         </div>
-        <script src="../js/firebase.js"></script>
+        <script type="module" src="../js/firebase.js"></script>
     </body>
 </html>

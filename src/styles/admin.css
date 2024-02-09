@@ -134,6 +134,9 @@ main {
     border-radius: 34px;
     background: var(--mainColorLightOrange);
 }
+.srcrslts{
+    border: none;
+}
 .search-results {
     width: 40%;
     max-height: 250px;
@@ -145,18 +148,27 @@ main {
     flex-direction: column;
     gap: 1rem;
     overflow-y: auto;
+   
 }
 .search-result {
     display: flex;
     align-items: center;
     gap: 1.5rem;
+    width: 15px;
 }
+.book-btn{
+    border: none;
+    display: flex;
+    gap: 10px;
+}
+
 .search-result p {
     margin: 0;
     font-family: "Preahvihear", sans-serif;
     font-size: 14px;
     font-style: normal;
     color: #bcbcbc;
+    text-align: left;
 }
 
 /* Book form */
