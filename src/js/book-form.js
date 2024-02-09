@@ -74,7 +74,17 @@ ylwBtnAdd.addEventListener("click", function(e){
     addType.style.visibility = "hidden"; 
   });
 
-
+window.addEventListener('load', (e) =>{
+    readData("/category")
+    .then((data) =>{
+      const categorys = convertData(data);
+      console.log(categorys);
+      bookTypeList.innerHTML =categorys.map(item =>
+        ` <option value=${item.name} selected>${item.name}</option>`
+        )
+      
+    })
+})
 
 typeAddBtn.addEventListener("click",()=>{
     const value = bookTypeInput.value;

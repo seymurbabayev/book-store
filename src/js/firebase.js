@@ -11,9 +11,8 @@ const bookImage = document.querySelector("#bookImage");
 const bookDesc = document.querySelector("#bookDesc");
 const addBtn = document.querySelector("#addBtn");
 // book type
-const addType = document.querySelector("#addType");
 const bookTypeList = document.querySelector("#bookTypeList")
-
+let categoryName = '';
 
 // search function start
 srcInput.addEventListener("keypress", event =>{
@@ -73,14 +72,11 @@ async function getBookByID(BookID){
 
 // firebase
 
-// Import the functions you need from the SDKs you need
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
 import {  getDatabase,
     ref,
     push,
-    set,
     get,
-    update,
     remove, } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
 
 
@@ -130,10 +126,7 @@ const createData = (path, data) => {
     return get(dataRef).then((snapshot) => snapshot.val());
   };
   
-  // Update
-  const updateData = (path, data) => {
-    return update(ref(database, path), data);
-  };
+
   
   // Delete
   const deleteData = (path) => {
@@ -156,7 +149,7 @@ const createData = (path, data) => {
     const author = bookAuthor.value = bookForm.volumeInfo.authors.toString()
     const image = bookImage.value = bookForm.volumeInfo.imageLinks.thumbnail
     const desc = bookDesc.value = bookForm.volumeInfo.description
- 
+    const category = categoryName
     srcResult.style.display = 'none'
     srcInput.value = '';
     const book  = {
@@ -164,18 +157,23 @@ const createData = (path, data) => {
       author,
       image,
       desc,
+      category
     
     }
-    bookTypeList.addEventListener("change",(e)=>{
-      
-      console.log(e.target.value);
-    })
     
+    
+    bookTypeList.addEventListener('change',(e)=>{
+      
+      categoryName = e.target.value;
+      console.log(categoryName);
+    });
   
     addBtn.addEventListener("click", function(e){
+     
       e.preventDefault();
       createData("books", book);
-      alert("added")
+      alert("added");
+      
   });
 });
 
