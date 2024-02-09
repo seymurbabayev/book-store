@@ -75,23 +75,11 @@ async function getBookByID(BookID){
 
 
 
-
-// firebase
-
-// Import the functions you need from the SDKs you need
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-import {  getDatabase,
-    ref,
-    push,
-    set,
-    get,
-    update,
-    remove, } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
+import {  getDatabase, ref, push, set, get, update, remove, } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
+import { getAuth, signInWithEmailAndPassword, signOut,onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
 
-// https://firebase.google.com/docs/web/setup#available-libraries
 
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
   apiKey: "AIzaSyDGsqCFzK968Iw30ccw_sa63MJ71JH8Ask",
   authDomain: "library-bookstore-47573.firebaseapp.com",
@@ -106,6 +94,7 @@ const firebaseConfig = {
 // Initialize Firebase
 const firebaseapp = initializeApp(firebaseConfig);
 const database = getDatabase(firebaseapp);
+const auth = getAuth(firebaseapp)
 
 // Create
 const createData = (path, data) => {
@@ -200,6 +189,8 @@ typeAddBtn.addEventListener("click",()=>{
   .catch((error) => console.error("Error reading data:", error));
 })
 
+
+export {auth, signInWithEmailAndPassword, signOut, onAuthStateChanged}
 
 
 

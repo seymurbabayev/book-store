@@ -197,6 +197,7 @@ form select {
     padding: 12px;
     margin: 8px 0;
     background: var(--mainColorLightOrange);
+    color: #fff;
     border: none;
     border-radius: 10px;
     width: 100%;
