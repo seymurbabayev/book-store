@@ -153,13 +153,13 @@ const createData = (path, data) => {
   
  
    
-    newchek.addEventListener("change", function(e){
+    newchek.addEventListener("change", (e)=>{
       e.preventDefault()
       const newcheck =e.target.value = e.target.checked
       
       console.log(e.target.value);
          
-    besteller.addEventListener("change", function(e){
+    besteller.addEventListener("change", (e)=>{
       e.preventDefault()
       const  bestellerbox =  e.target.value = e.target.checked
       console.log(e.target.value);
@@ -195,10 +195,10 @@ const createData = (path, data) => {
 
 });
 
-// besteller.addEventListener("change", function(e){
-//   e.target.value = e.target.checked
-//   console.log(e.target.value);
-// });
+besteller.addEventListener("change", function(e){
+  e.target.value = e.target.checked
+  console.log(e.target.value);
+});
 
 // newchek.addEventListener("change", function(e){
 //   e.target.value = e.target.checked
