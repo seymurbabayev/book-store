@@ -2,7 +2,6 @@
 const srcInput = document.querySelector("#srcInput");
 const srcBtn = document.querySelector("#srcBtn");
 const srcResult = document.querySelector("#srcResult");
-const bookResult = document.querySelector("#bookResult");
 const srcList = document.querySelector("#srcList");
 // search function end
 // firebase start
@@ -11,14 +10,9 @@ const bookAuthor = document.querySelector("#bookAuthor");
 const bookImage = document.querySelector("#bookImage");
 const bookDesc = document.querySelector("#bookDesc");
 const addBtn = document.querySelector("#addBtn");
-const ylwBtnAdd = document.querySelector("#ylwBtnAdd");
 // book type
-const addType = document.querySelector("#addType");
-const closeBtn = document.querySelector("#closeBtn");
-const bookTypeInput = document.querySelector("#bookTypeInput");
-const typeAddBtn = document.querySelector("#typeAddBtn");
 const bookTypeList = document.querySelector("#bookTypeList")
-
+let categoryName = '';
 
 // search function start
 srcInput.addEventListener("keypress", event =>{
@@ -126,10 +120,7 @@ const createData = (path, data) => {
     return get(dataRef).then((snapshot) => snapshot.val());
   };
   
-  // Update
-  const updateData = (path, data) => {
-    return update(ref(database, path), data);
-  };
+
   
   // Delete
   const deleteData = (path) => {
@@ -139,55 +130,50 @@ const createData = (path, data) => {
     readData("/books")
       .then((data) => {
         const books = convertData(data);
-        console.log(Object.keys(books[1]));
+        console.log(books);
        
       })
       .catch((error) => console.error("Error reading data:", error));
   
   srcList.addEventListener("click", async (e)=>{
     const bookID = e.target.value;
-    const bookForm = await getBookByID(bookID)
-    bookTitle.value = bookForm.volumeInfo.title
-    bookAuthor.value = bookForm.volumeInfo.authors.toString()
-    bookImage.value = bookForm.volumeInfo.imageLinks.thumbnail
-    bookDesc.value = bookForm.volumeInfo.description
-    bookTypeInput.value = 
+    const bookForm = await getBookByID(bookID);
+    
+    const title =  bookTitle.value = bookForm.volumeInfo.title
+    const author = bookAuthor.value = bookForm.volumeInfo.authors.toString()
+    const image = bookImage.value = bookForm.volumeInfo.imageLinks.thumbnail
+    const desc = bookDesc.value = bookForm.volumeInfo.description
+    const category = categoryName
     srcResult.style.display = 'none'
     srcInput.value = '';
+    const book  = {
+      title,
+      author,
+      image,
+      desc,
+      category
     
+    }
+    
+    
+    bookTypeList.addEventListener('change',(e)=>{
+      
+      categoryName = e.target.value;
+      console.log(categoryName);
+    });
+  
     addBtn.addEventListener("click", function(e){
+     
       e.preventDefault();
-      createData("books", bookForm);
-      alert("added")
+      createData("books", book);
+      alert("added");
+      
   });
 });
 
 
-ylwBtnAdd.addEventListener("click", function(e){
-  e.preventDefault();
-  addType.style.visibility = "visible"; 
-});
-closeBtn.addEventListener("click", function(e){
-  e.preventDefault();
-  addType.style.visibility = "hidden"; 
-});
 
-typeAddBtn.addEventListener("click",()=>{
-  const value = bookTypeInput.value;
-  bookTypeInput.value = '';
-  createData("category", value);
-  alert("Category Added!");
-  readData("/category")
-  .then((data) =>{
-    const categorys = convertData(data);
-    console.log(categorys);
-    bookTypeList.innerHTML =categorys.map(item =>
-      ` <option value="fantastic" selected>${item.name}</option>`
-      )
-    
-  })
-  .catch((error) => console.error("Error reading data:", error));
-})
+
 
 
 export {auth, signInWithEmailAndPassword, signOut, onAuthStateChanged}
