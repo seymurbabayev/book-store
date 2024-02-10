@@ -15,23 +15,27 @@
         <script src="https://kit.fontawesome.com/6c5c17cc5b.js" crossorigin="anonymous"></script>
     </head>
     <body>
-        <div class="admin-login d-none">
+        <div class="admin-login">
             <header>
                 <img class="logo" src="../assets/images/logo-admin.svg" alt="" />
             </header>
             <section>
                 <div class="login-container">
+                    <div id="alertEl" class="alert alert-danger text-center d-none" role="alert"></div>
                     <h2 class="login-container_title">Welcome Admin</h2>
                     <form class="login-form" action="">
-                        <input class="username-input" placeholder="Username" type="text" />
-                        <input class="password-input" placeholder="Password" type="password" />
-                        <button class="login-form_btn">Join</button>
+                        <input class="username-input" placeholder="Username" type="text" required />
+                        <input class="password-input" placeholder="Password" type="password" required />
+                        <button class="login-form_btn">Join
+                            <!-- <span class="badge text-bg-success">Success</span>
+                            <span class="badge text-bg-danger">Danger</span> -->
+                        </button>
                     </form>
                 </div>
             </section>
         </div>
 
-        <div class="admin-panel d-flex">
+        <div class="admin-panel d-flex d-none">
             <div class="desk-menu-container col-md-3">
                 <nav class="h-100">
                     <a href="#"><img class="logo" src="../assets/images/logo-admin.svg" alt="" /></a>
@@ -58,7 +62,7 @@
                         </li>
                         <li>
                             <img src="../assets/images/books-icon.svg" alt="Books icon" />
-                            <a href="#">Logout</a>
+                            <a id="logoutBtn" href="">Logout</a>
                         </li>
                     </ul>
                 </nav>
@@ -314,6 +318,7 @@
             </main>
         </div>
         <script type="module" src="../js/firebase.js"></script>
+        <script type="module" src="../js/admin.js"></script>
         <script type="module" src="../js/book-form.js"></script>
     </body>
 </html>

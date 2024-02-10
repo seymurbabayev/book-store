@@ -69,16 +69,9 @@ async function getBookByID(BookID){
 
 
 
-
-// firebase
-
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-import {  getDatabase,
-    ref,
-    push,
-    get,
-    remove, } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
-
+import {  getDatabase, ref, push, set, get, update, remove, } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
+import { getAuth, signInWithEmailAndPassword, signOut,onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
 
 
 const firebaseConfig = {
@@ -95,6 +88,7 @@ const firebaseConfig = {
 // Initialize Firebase
 const firebaseapp = initializeApp(firebaseConfig);
 const database = getDatabase(firebaseapp);
+const auth = getAuth(firebaseapp)
 
 // Create
 const createData = (path, data) => {
@@ -181,6 +175,8 @@ const createData = (path, data) => {
 
 
 
+
+export {auth, signInWithEmailAndPassword, signOut, onAuthStateChanged}
 
 
 
