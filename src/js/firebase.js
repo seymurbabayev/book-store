@@ -150,26 +150,14 @@ const createData = (path, data) => {
     const author = bookAuthor.value = bookForm.volumeInfo.authors.toString()
     const image = bookImage.value = bookForm.volumeInfo.imageLinks.thumbnail
     const desc = bookDesc.value = bookForm.volumeInfo.description
-  
- 
    
-    newchek.addEventListener("change", (e)=>{
-      e.preventDefault()
-      const newcheck =e.target.value = e.target.checked
-      
-      console.log(e.target.value);
-         
-    besteller.addEventListener("change", (e)=>{
-      e.preventDefault()
-      const  bestellerbox =  e.target.value = e.target.checked
-      console.log(e.target.value);
-   
-    
     bookTypeList.addEventListener('change',(e)=>{
       e.preventDefault()
       categoryName = e.target.value;
       console.log(categoryName);
-  
+      const bestsellerbox =besteller.checked
+    const newcheck = newchek.checked
+
     const category = categoryName
     srcResult.style.display = 'none'
     srcInput.value = '';
@@ -180,7 +168,7 @@ const createData = (path, data) => {
       desc,
       category,
       newcheck,
-      bestellerbox
+      bestsellerbox
 
     }
     addBtn.addEventListener("click", function(e){
@@ -191,19 +179,6 @@ const createData = (path, data) => {
     });   
 });
 });
-});
-
-});
-
-besteller.addEventListener("change", function(e){
-  e.target.value = e.target.checked
-  console.log(e.target.value);
-});
-
-// newchek.addEventListener("change", function(e){
-//   e.target.value = e.target.checked
-//   console.log(e.target.value);
-// });
 
 
 
