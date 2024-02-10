@@ -10,8 +10,10 @@ const bookAuthor = document.querySelector("#bookAuthor");
 const bookImage = document.querySelector("#bookImage");
 const bookDesc = document.querySelector("#bookDesc");
 const addBtn = document.querySelector("#addBtn");
+const besteller = document.querySelector("#checkbox");
+const newchek = document.querySelector("#new");
 // book type
-const bookTypeList = document.querySelector("#bookTypeList")
+const bookTypeList = document.querySelector("#bookTypeList");
 let categoryName = '';
 
 // search function start
@@ -128,10 +130,8 @@ const createData = (path, data) => {
   
 
   
-  // Delete
-  const deleteData = (path) => {
-    return remove(ref(database, path));
-  };
+
+
  
     readData("/books")
       .then((data) => {
@@ -142,6 +142,7 @@ const createData = (path, data) => {
       .catch((error) => console.error("Error reading data:", error));
   
   srcList.addEventListener("click", async (e)=>{
+    e.preventDefault()
     const bookID = e.target.value;
     const bookForm = await getBookByID(bookID);
     
@@ -149,6 +150,26 @@ const createData = (path, data) => {
     const author = bookAuthor.value = bookForm.volumeInfo.authors.toString()
     const image = bookImage.value = bookForm.volumeInfo.imageLinks.thumbnail
     const desc = bookDesc.value = bookForm.volumeInfo.description
+  
+ 
+   
+    newchek.addEventListener("change", function(e){
+      e.preventDefault()
+      const newcheck =e.target.value = e.target.checked
+      
+      console.log(e.target.value);
+         
+    besteller.addEventListener("change", function(e){
+      e.preventDefault()
+      const  bestellerbox =  e.target.value = e.target.checked
+      console.log(e.target.value);
+   
+    
+    bookTypeList.addEventListener('change',(e)=>{
+      e.preventDefault()
+      categoryName = e.target.value;
+      console.log(categoryName);
+  
     const category = categoryName
     srcResult.style.display = 'none'
     srcInput.value = '';
@@ -157,25 +178,32 @@ const createData = (path, data) => {
       author,
       image,
       desc,
-      category
-    
+      category,
+      newcheck,
+      bestellerbox
+
     }
-    
-    
-    bookTypeList.addEventListener('change',(e)=>{
-      
-      categoryName = e.target.value;
-      console.log(categoryName);
-    });
-  
     addBtn.addEventListener("click", function(e){
      
       e.preventDefault();
       createData("books", book);
       alert("added");
-      
-  });
+    });   
 });
+});
+});
+
+});
+
+// besteller.addEventListener("change", function(e){
+//   e.target.value = e.target.checked
+//   console.log(e.target.value);
+// });
+
+// newchek.addEventListener("change", function(e){
+//   e.target.value = e.target.checked
+//   console.log(e.target.value);
+// });
 
 
 
