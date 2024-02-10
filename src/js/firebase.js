@@ -10,8 +10,10 @@ const bookAuthor = document.querySelector("#bookAuthor");
 const bookImage = document.querySelector("#bookImage");
 const bookDesc = document.querySelector("#bookDesc");
 const addBtn = document.querySelector("#addBtn");
+const besteller = document.querySelector("#checkbox");
+const newchek = document.querySelector("#new");
 // book type
-const bookTypeList = document.querySelector("#bookTypeList")
+const bookTypeList = document.querySelector("#bookTypeList");
 let categoryName = '';
 
 // search function start
@@ -122,10 +124,8 @@ const createData = (path, data) => {
   
 
   
-  // Delete
-  const deleteData = (path) => {
-    return remove(ref(database, path));
-  };
+
+
  
     readData("/books")
       .then((data) => {
@@ -136,6 +136,7 @@ const createData = (path, data) => {
       .catch((error) => console.error("Error reading data:", error));
   
   srcList.addEventListener("click", async (e)=>{
+    e.preventDefault()
     const bookID = e.target.value;
     const bookForm = await getBookByID(bookID);
     
@@ -143,6 +144,14 @@ const createData = (path, data) => {
     const author = bookAuthor.value = bookForm.volumeInfo.authors.toString()
     const image = bookImage.value = bookForm.volumeInfo.imageLinks.thumbnail
     const desc = bookDesc.value = bookForm.volumeInfo.description
+   
+    bookTypeList.addEventListener('change',(e)=>{
+      e.preventDefault()
+      categoryName = e.target.value;
+      console.log(categoryName);
+      const bestsellerbox =besteller.checked
+    const newcheck = newchek.checked
+
     const category = categoryName
     srcResult.style.display = 'none'
     srcInput.value = '';
@@ -151,24 +160,18 @@ const createData = (path, data) => {
       author,
       image,
       desc,
-      category
-    
+      category,
+      newcheck,
+      bestsellerbox
+
     }
-    
-    
-    bookTypeList.addEventListener('change',(e)=>{
-      
-      categoryName = e.target.value;
-      console.log(categoryName);
-    });
-  
     addBtn.addEventListener("click", function(e){
      
       e.preventDefault();
       createData("books", book);
       alert("added");
-      
-  });
+    });   
+});
 });
 
 
@@ -177,6 +180,12 @@ const createData = (path, data) => {
 
 
 export {auth, signInWithEmailAndPassword, signOut, onAuthStateChanged}
+
+
+
+
+
+
 
 
 
