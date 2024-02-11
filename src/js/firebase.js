@@ -93,13 +93,15 @@ const database = getDatabase(firebaseapp);
 const auth = getAuth(firebaseapp)
 
 // Create
-const createData = (path, data) => {
+export const createData = (path, data) => {
     const newRef = push(ref(database, path), data);
   
     return newRef.key;
   };
   
-  function convertData(d) {
+
+  
+  export function convertData(d) {
     const newData = Object.entries(d);
   
     const myNewData = newData.map((kicikArr) => {
@@ -114,6 +116,12 @@ const createData = (path, data) => {
     return myNewData;
   }
   
+  //Write
+  export function writeSetData(path, data){
+    const setKey = set(ref(database, path), data);
+    return setKey.key
+
+  }
   // Read
   const readData = (path) => {
    
