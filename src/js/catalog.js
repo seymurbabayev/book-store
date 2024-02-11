@@ -61,12 +61,14 @@ readData("/books")
 
 function renderAllBooks(list){
     allBooks.innerHTML = list.map(item =>
-        `<div class="catalog_box_item">
-        <img src="${item.image}" alt="">
-        <span>New</span>
-        <h5>Konstantin Koptelov</h5>
-        <a href="../pages/book.html" >Read more</a>
-    </div>`).join("")
+        `<div class="swiper-slide" >
+        <div class="catalog_box_item">
+            <img src="${item.image}" alt="">
+            <span>New</span>
+            <h5>${item.title}</h5>
+            <a href="../pages/book.html" >Read more</a>
+        </div>
+    </div> `).join("")
 }
 
 
