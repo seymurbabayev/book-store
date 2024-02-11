@@ -93,7 +93,7 @@ const database = getDatabase(firebaseapp);
 const auth = getAuth(firebaseapp)
 
 // Create
-export const createData = (path, data) => {
+const createData = (path, data) => {
     const newRef = push(ref(database, path), data);
   
     return newRef.key;
