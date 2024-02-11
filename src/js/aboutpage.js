@@ -23,7 +23,11 @@ const firebaseConfig = {
 // Initialize Firebase
 const firebaseapp = initializeApp(firebaseConfig);
 const database = getDatabase(firebaseapp);
+function writeSetData(path, data){
+  const setKey = set(ref(database, path), data);
+  return setKey.key
 
+}
 
 const create = (path, data) => {
   const newRef = push(ref(database, path), data);
@@ -61,9 +65,9 @@ readData("/about")
 
 aboutAddBtn?.addEventListener("click", function(e){
   e.preventDefault()
-  const aboutTitle = aboutBookTitle.value='';
-  const aboutImage = aboutBookImage.value='';
-  const aboutDesc = aboutBookDesc.value='';
+  const aboutTitle = aboutBookTitle.value;
+  const aboutImage = aboutBookImage.value;
+  const aboutDesc = aboutBookDesc.value;
   const form = {
     aboutTitle,
     aboutImage,
