@@ -111,24 +111,3 @@ aboutArea.innerHTML = list.map(item =>
 
 
 
-// function aboutRender() {
-//   let aboutContent = document.querySelector(".about_page");
-//   onValue(aboutStore, (snapshot) => {
-//     const aboutData = snapshot.val();
-//     let aboutItem = [aboutData]
-//       .map(
-//         (item) =>
-//           `<div class="about_paragraph">
-//               <h1 class="about_title">${item.Title}</h1>
-//               <p class="about_text">${item.Desc}</p>
-//           </div>
-//           <div class="about_img">
-//               <img src="${item.BookUrl}" alt="About Book" />
-//           </div>`
-//       )
-//       .join("");
-//     aboutContent.innerHTML = aboutItem;
-//   });
-// }
-
-// aboutRender();
