@@ -1,15 +1,12 @@
-// import{writeSetData,  createData }from "firebase.js"
-
-
 const aboutBookTitle = document.querySelector("#aboutBookTitle");
 const aboutBookImage = document.querySelector("#aboutBookImage");
 const aboutBookDesc = document.querySelector("#aboutBookDesc");
 const aboutAddBtn = document.querySelector("#aboutAddBtn");
-console.log(aboutBookTitle);
+const aboutArea = document.querySelector("#aboutArea");
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-import {  getDatabase, ref, push, set, get, update, remove, } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
-// import { getAuth, signInWithEmailAndPassword, signOut,onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+import {  getDatabase, ref, get, set, push  } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
+// import { createData } from "./firebase";
 
 
 const firebaseConfig = {
@@ -26,15 +23,47 @@ const firebaseConfig = {
 // Initialize Firebase
 const firebaseapp = initializeApp(firebaseConfig);
 const database = getDatabase(firebaseapp);
-// const auth = getAuth(firebaseapp);
-
 function writeSetData(path, data){
   const setKey = set(ref(database, path), data);
   return setKey.key
 
 }
 
-aboutAddBtn.addEventListener("click", function(e){
+const create = (path, data) => {
+  const newRef = push(ref(database, path), data);
+
+  return newRef.key;
+};
+
+const readData = (path) => {
+   
+  
+  const dataRef = ref(database, path);
+  return get(dataRef).then((snapshot) => snapshot.val());
+};
+function convertData(d) {
+  const newData = Object.entries(d);
+
+  const myNewData = newData.map((kicikArr) => {
+    const newObj = {
+      id: kicikArr[0],
+      ...kicikArr[1]
+    };
+
+    return newObj;
+  });
+
+  return myNewData;
+}
+readData("/about")
+.then((data) =>{
+  const desc = convertData(data);
+  renderAbout(desc);
+})
+.catch((error) => console.error("Error reading data:", error));
+
+
+aboutAddBtn?.addEventListener("click", function(e){
   e.preventDefault()
   const aboutTitle = aboutBookTitle.value;
   const aboutImage = aboutBookImage.value;
@@ -46,12 +75,28 @@ aboutAddBtn.addEventListener("click", function(e){
   }
   
 
-writeSetData("/about", form)
-alert("added")
+create("/about", form)
+alert("Added")
+console.log(form);
   
 })
 
 
+function renderAbout (list){
+aboutArea.innerHTML = list.map(item =>
+  `<div class="about_page">
+  <div class="about_paragraph" >
+      <h1 class="about_title">${item.aboutTitle}</h1>
+      <p class="about_text">
+      ${item.aboutDesc}
+      </p>
+  </div>
+  <div class="about_img">
+
+ <img src="${item.aboutImage}" width="90%"/>
+  </div>
+</div>`).join("")
+}
 
 
 
@@ -63,24 +108,6 @@ alert("added")
 
 
 
-// function aboutRender() {
-//   let aboutContent = document.querySelector(".about_page");
-//   onValue(aboutStore, (snapshot) => {
-//     const aboutData = snapshot.val();
-//     let aboutItem = [aboutData]
-//       .map(
-//         (item) =>
-//           `<div class="about_paragraph">
-//               <h1 class="about_title">${item.Title}</h1>
-//               <p class="about_text">${item.Desc}</p>
-//           </div>
-//           <div class="about_img">
-//               <img src="${item.BookUrl}" alt="About Book" />
-//           </div>`
-//       )
-//       .join("");
-//     aboutContent.innerHTML = aboutItem;
-//   });
-// }
 
-// aboutRender();
+
+
