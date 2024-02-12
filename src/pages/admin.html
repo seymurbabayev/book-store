@@ -26,7 +26,8 @@
                     <form class="login-form" action="">
                         <input class="username-input" placeholder="Username" type="text" required />
                         <input class="password-input" placeholder="Password" type="password" required />
-                        <button class="login-form_btn">Join
+                        <button class="login-form_btn">
+                            Join
                             <!-- <span class="badge text-bg-success">Success</span>
                             <span class="badge text-bg-danger">Danger</span> -->
                         </button>
@@ -82,21 +83,19 @@
                                 <img src="../assets/images/search-icon.svg" alt="search icon" />
                             </button>
                         </div>
-                        <div  id="srcResult" class="search-results d-flex flex-column">
-                            <ul id="srcList">
-                            <li class="result-search">
-                                <!-- <span><i class="far fa-clock"></i></span>
-                                <span>Dan Brown</span>
-                                <span>Book name</span> -->
-
-                            </li>
-                           
-                        </ul>
+                        <div id="srcResult" class="search-results d-flex flex-column d-none">
+                            <ul id="srcList" class="p-0 m-0">
+                                <!-- <li class="result-search">
+                                    <span><i class="far fa-clock"></i></span>
+                                    <span>Dan Brown</span>
+                                    <span>Book name</span>
+                                </li> -->
+                            </ul>
                         </div>
                     </div>
                     <div class="book-form-container">
                         <h3 class="section-subtitle">Book form</h3>
-                        <form action="">
+                        <form action="" id="bookForm">
                             <div class="mb-3">
                                 <label for="bookTitle" class="form-label">Book Title</label>
                                 <input
@@ -129,13 +128,13 @@
                                 <textarea class="form-control" id="bookDesc" rows="3"></textarea>
                             </div>
                             <div class="checkbox-wrapper-29 mb-3">
-                                <label  class="checkbox">
+                                <label class="checkbox">
                                     <input id="new" type="checkbox" unchecked class="checkbox__input" />
                                     <span class="checkbox__label"></span>
                                     New
                                 </label>
-                                <label  class="checkbox">
-                                    <input id="checkbox"  type="checkbox"  unchecked class="checkbox__input" />
+                                <label class="checkbox">
+                                    <input id="checkbox" type="checkbox" unchecked class="checkbox__input" />
                                     <span class="checkbox__label"></span>
                                     Bestseller
                                 </label>
@@ -143,10 +142,14 @@
                             <div class="d-flex flex-column align-items-start gap-2">
                                 <label for="bookType">Book type</label>
                                 <button id="ylwBtnAdd" class="btn btn-sm btn-warning">+</button>
-                                <div id="addType" class="add-type d-flex gap-3 ">
+                                <div id="addType" class="add-type d-flex gap-3">
                                     <input id="bookTypeInput" type="text" class="form-control" />
-                                    <button id="typeAddBtn" type="button" class="btn btn-outline-success">Add</button>
-                                    <button id="closeBtn" type="button" class="btn btn-outline-danger">Close</button>
+                                    <button id="typeAddBtn" type="button" class="btn btn-outline-success">
+                                        Add
+                                    </button>
+                                    <button id="closeBtn" type="button" class="btn btn-outline-danger">
+                                        Close
+                                    </button>
                                 </div>
                                 <select id="bookTypeList" class="form-select form-select-sm mb-3">
                                     <!-- <option value="fantastic" selected>Fantastic</option>
@@ -179,37 +182,37 @@
                 </section>
                 <section id="join" class="join-section">
                     <h2 class="section-title">Join Us</h2>
-                        <table class="">
-                            <thead>
-                                <tr>
-                                    <th scope="col">#</th>
-                                    <th scope="col">Full Name</th>
-                                    <th scope="col">Email Address</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td scope="row">1</td>
-                                    <td>John Doe</td>
-                                    <td>user@gmail.com</td>
-                                </tr>
-                                <tr>
-                                    <td scope="row">2</td>
-                                    <td>John Doe</td>
-                                    <td>user@gmail.com</td>
-                                </tr>
-                                <tr>
-                                    <td scope="row">3</td>
-                                    <td>John Doe</td>
-                                    <td>user@gmail.com</td>
-                                </tr>
-                                <tr>
-                                    <td scope="row">4</td>
-                                    <td>John Doe</td>
-                                    <td>user@gmail.com</td>
-                                </tr>
-                            </tbody>
-                        </table>
+                    <table class="">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Full Name</th>
+                                <th scope="col">Email Address</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td scope="row">1</td>
+                                <td>John Doe</td>
+                                <td>user@gmail.com</td>
+                            </tr>
+                            <tr>
+                                <td scope="row">2</td>
+                                <td>John Doe</td>
+                                <td>user@gmail.com</td>
+                            </tr>
+                            <tr>
+                                <td scope="row">3</td>
+                                <td>John Doe</td>
+                                <td>user@gmail.com</td>
+                            </tr>
+                            <tr>
+                                <td scope="row">4</td>
+                                <td>John Doe</td>
+                                <td>user@gmail.com</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </section>
                 <section id="books" class="books-section">
                     <h2 class="section-title">Books</h2>
@@ -228,7 +231,11 @@
                                 <tr>
                                     <td scope="row">1</td>
                                     <td>
-                                        <img class="me-1" src="../assets/images/angels-book.svg" alt="angels book">
+                                        <img
+                                            class="me-1"
+                                            src="../assets/images/angels-book.svg"
+                                            alt="angels book"
+                                        />
                                         Angels
                                     </td>
                                     <td>Lorem ipsum</td>
@@ -238,7 +245,11 @@
                                 <tr>
                                     <td scope="row">1</td>
                                     <td>
-                                        <img class="me-1" src="../assets/images/angels-book.svg" alt="angels book">
+                                        <img
+                                            class="me-1"
+                                            src="../assets/images/angels-book.svg"
+                                            alt="angels book"
+                                        />
                                         Angels
                                     </td>
                                     <td>Lorem ipsum</td>
@@ -248,7 +259,11 @@
                                 <tr>
                                     <td scope="row">1</td>
                                     <td>
-                                        <img class="me-1" src="../assets/images/angels-book.svg" alt="angels book">
+                                        <img
+                                            class="me-1"
+                                            src="../assets/images/angels-book.svg"
+                                            alt="angels book"
+                                        />
                                         Angels
                                     </td>
                                     <td>Lorem ipsum</td>
@@ -258,7 +273,11 @@
                                 <tr>
                                     <td scope="row">1</td>
                                     <td>
-                                        <img class="me-1" src="../assets/images/angels-book.svg" alt="angels book">
+                                        <img
+                                            class="me-1"
+                                            src="../assets/images/angels-book.svg"
+                                            alt="angels book"
+                                        />
                                         Angels
                                     </td>
                                     <td>Lorem ipsum</td>
