@@ -1,4 +1,7 @@
-const allBooks = document.querySelector("#allBooks")
+const allBooks = document.querySelector("#allBooks");
+const bestseller = document.querySelector("#bestseller");
+const newchek = document.querySelector("#new");
+const category = document.querySelector("#category")
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
 import {  getDatabase, ref, get, set, push  } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
@@ -55,8 +58,37 @@ readData("/books")
 .then((data) =>{
   const desc = convertData(data);
   renderAllBooks(desc);
+  renderBestSeller(desc);
+  renderNew(desc);
 })
 .catch((error) => console.error("Error reading data:", error));
+
+
+// readData("/category")
+// .then((data) =>{
+
+// const categorys = Object.values(data)
+
+//   // console.log(categorys);
+//   renderCategorys(categorys)
+// })
+// .catch((error) => console.error("Error reading data:", error));
+
+// function renderCategorys(list){
+//    category.innerHTML = list.map((item)=>{
+//     return`
+//     <div class="catalog_categories" >
+//     <ul>
+//          <li>
+//          <button type="button" class="catalog_categories">${item}</button>
+//         </li>
+        
+//     </ul>
+// </div>
+//     `
+//   }).join("")
+
+// }
 
 
 function renderAllBooks(list){
@@ -64,11 +96,55 @@ function renderAllBooks(list){
         `<div class="swiper-slide" >
         <div class="catalog_box_item">
             <img src="${item.image}" alt="">
-            <span>New</span>
+            <span>${item.newcheck === true ? 'New' : 'Bestseller'}</span>
             <h5>${item.title}</h5>
             <a href="../pages/book.html" >Read more</a>
         </div>
     </div> `).join("")
+}
+function renderNew(datas){
+  const data = convertData(datas);
+  let filteredBooks = data.filter((book)=>{
+    if (book.newcheck === true){
+        return book
+    }
+  })
+
+  newchek.innerHTML = filteredBooks.map((item)=>{
+    return `
+    <div class="swiper-slide">
+     <div class="catalog_box_item">
+     <img src="${item.image}" alt="">
+    <span>New</span>
+     <h5>${item.title}</h5>
+      <a href="#">Read more</a>
+      </div>
+   </div>
+    `
+  }).join("")
+}
+
+
+function renderBestSeller(datas){
+  const data = convertData(datas);
+  let filteredBooks = data.filter((book)=>{
+    if (book.bestsellerbox === true){
+        return book
+    }
+  })
+
+  bestseller.innerHTML = filteredBooks.map((item)=>{
+    return `
+    <div class="swiper-slide">
+     <div class="catalog_box_item">
+     <img src="${item.image}" alt="">
+    <span >${item.newcheck === true ? 'New' : 'Bestseller'}</span>
+     <h5>${item.title}</h5>
+      <a href="#">Read more</a>
+      </div>
+   </div>
+    `
+  }).join("")
 }
 
 
