@@ -77,6 +77,7 @@ main{
 
 /* SECTION-2 */
 .section-2{
+   
     width: 50%;
     margin: 0 0 80px 77px;
 
@@ -126,28 +127,75 @@ input::placeholder{
     font-weight: 500;
 }
 
-.anonim-side{
+.anonim-comments .comm1 {
+    width: 686px;
+    height: 167px;
+    flex-shrink: 0;
+    border-radius: 5px;
+    background-color: #ffff;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    display: flex;
+    justify-content: center;
+    gap: 14px;
+    flex-direction: column;
+    padding: 28px 18px;
+    margin-bottom: 43px;
+  } 
+
+
+  .user1-info p {
+    color:  #241400;
+    font-family:  var( --fontRoboto);
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px; /* 150% */
+  }
+
+  .comm1 p {
+    color: #241400;
+    /* font-feature-settings: "clig" off, "liga" off; */
+    font-family:  var( --fontRoboto);
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px; /* 150% */
+    width: 650.253px;
+  }
+
+
+
+
+
+
+
+/* .anonim-side{
     display: flex;
     flex-direction: row;
     gap: 10px;
     margin-bottom: 10px;
     
-}
+} */
 
-.comment-title{
+/* .comment-title{
     font-weight: 400;
     font-size: 16px;
-    line-height: 24px;
-}
-.comment{
+    line-height: 24px; */
+/* } */
+/* .comment{
+    
+    overflow-y: auto;
+    height: 167px;
     background-color: #ffff;
     border-radius: 4px;
     box-shadow:  0px 0px 10px 1px rgba(0, 0, 0, 0.25);
     padding: 30px 25px 30px 25px;
     
-}
+} */
+
 
 .section-2-design{
+   
     display: flex;
     flex-direction: column;
     gap: 40px;

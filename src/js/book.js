@@ -1,0 +1,172 @@
+
+
+
+let comment_input = document.querySelector(".input-comment");
+let send_icon = document.querySelector(".send-icon");
+
+let comment = document.querySelector(".anonim-comments");
+
+send_icon.addEventListener("click", async function (e) {
+  e.preventDefault(); 
+   let value = comment_input.value;
+   let commentData = {
+    text: value,
+    bookId: 'salam',
+};
+   const response = await createPost (commentData)
+  //  console.log(response);
+  // let listItem = `
+  //   <div class="comment">
+  //     <div class="anonim-side">
+  //       <div class="user"><p>anonim:</p></div>
+  //       <div><p>${getCurrentTime()}</p></div>
+  //     </div>
+  //     <div class="comment-title"><p>${comment_input.value}</p></div>
+  //   </div>
+  // `;
+  // postla yaz gonder api a komment yazilan hisseni inputda yazilan  gonder ora 
+  // sehife yuklenen anda hemin get post funksiyasi cagirilir comment.container innerhtml'ine menimset
+
+  // comments_container.innerHTML += listItem;
+  comment_input.value = "";
+  renderComment()
+});
+
+async function renderComment () {
+
+
+  const response = await getPosts();
+  let arr = response.filter(item=>item.id>100)
+  console.log(arr);
+  const bookPage = arr.reverse().map((book,i ) =>{
+if (i<10){
+  
+
+return `
+
+<div class="comm1">
+<div class="user1-info">
+  <h2>anonim</h2>
+  <p>${getCurrentTime()}</p>
+</div>
+<p>
+  ${book.text}
+</p>
+</div>
+
+`;
+}
+  }).join('');
+  comment.innerHTML = bookPage;
+  
+  // console.log(response);
+}
+// renderComment()
+
+
+function getCurrentTime() {
+  const now = new Date();
+  const hours = now.getHours().toString().padStart(2, '0');
+  const minutes = now.getMinutes().toString().padStart(2, '0');
+  return `${hours}:${minutes} today`;
+}
+
+function getTimeDifferenceInDays(date) {
+  const currentDate = new Date();
+  const releaseDate = new Date(date);
+  const timeDifferenceInMilliseconds = currentDate - releaseDate;
+  const daysDifference = Math.floor(timeDifferenceInMilliseconds / (1000 * 60 * 60 * 24));
+  return daysDifference;
+}
+
+// let book_url = window.location.hash;
+// let book_length = book_url.length;
+// let book_id = book_url.slice(4, book_length);
+// let book_page = document.querySelector("#book_page");
+// let renderBookPageDetails = () => {
+//   // onValue(ref(database, 'books'),(snapshot) => {
+//     // const bookData = snapshot.val();
+//     // let bookDataToArr = Object.entries(bookData);
+//     let bookPageArr = bookDataToArr.filter((item) => item[0] == book_id);
+//     let bookPage = bookPageArr.map((item) => {
+//       const daysAgo = getTimeDifferenceInDays(item[1].book_date);
+
+//       return `
+//         <div class="section-1-design"> 
+//           <div><a class="btn-back" href="../pages/catalog.html"> < BACK</a></div>
+//           <div class="year-book">${item[1].book_apperance.slice(0, 4)}</div>
+//           <div><h1 class="book-name">${item[1].book_title}</h1></div>
+//           <div class="history-add"><p>${daysAgo}</p></div>
+//           <div class="author-name"><p>${item[1].book_author}</p></div>
+//           <div class="book-title"> <p>${item[1].book_desc}</p> </div>
+//           <div><img src="${item[1].book.image}" alt=""></div>
+//         </div>
+
+//         <div class="section-2-design">
+//           <div class="send">
+//             <input class="input-comment" type="text" placeholder="your anonim comment...">
+//             <div class="send-icon"> <img src="../assets/images/sendicon.svg" alt=""></div>
+//           </div>
+//           <!-- Other content in section-2 goes here -->
+//         </div>
+        
+//       `;
+//     });
+//     book_page.innerHTML = bookPage.join('');
+//   };
+
+
+// renderBookPageDetails();
+
+//Get post eleyen zaman Try icinde Request atir 
+async function getPosts() {
+  try {
+    let respons = await fetch('https://blog-api-t6u0.onrender.com/posts', {
+      method: "GET",
+      headers:{
+        'Content-Type': "application/json",
+    }
+    });
+    const data = await respons.json(); // data alir ve return edir
+    console.log(data);
+    return data;
+  } catch (error) {
+    console.log("Error: " + error);
+  }
+}
+// getPosts();
+
+
+async function createPost(send) {
+  try {
+    let respons = await fetch('https://blog-api-t6u0.onrender.com/posts', {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(send),
+    });
+    let data = await respons.json();
+console.log(send);
+    return data;
+  } catch (error) {
+    console.log("Error: " + error);
+  }
+}
+// createPost();
+
+// function renderElements(data){
+
+
+
+// }
+
+
+
+
+
+
+
+
+
+
