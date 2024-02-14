@@ -1,4 +1,5 @@
 import { auth, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "./firebase.js";
+import { listenForChanges, convertData, deleteData } from "./firebase.js";
 
 const usernameInp = document.querySelector(".username-input");
 const passwordInp = document.querySelector(".password-input");
@@ -7,6 +8,11 @@ const logoutBtn = document.querySelector("#logoutBtn");
 
 const adminLoginScreen = document.querySelector(".admin-login");
 const adminPanelScreen = document.querySelector(".admin-panel");
+
+const booksTable = document.querySelector('#booksTable');
+
+// const trashIcons = document.querySelectorAll('.fa-trash')
+// console.log(trashIcons);
 
 window.addEventListener("load", checkAuthState);
 
@@ -63,3 +69,35 @@ logoutBtn.addEventListener("click", async function (e) {
     e.preventDefault();
     await signOut(auth);
 });
+
+listenForChanges('books', (data)=>{
+    const books = convertData(data)
+    console.log(books);
+
+    booksTable.innerHTML = books.map((book,i)=>`
+    <tr>
+    <td scope="row">${i + 1}</td>
+    <td class="text-start">
+        <img
+            class="me-1 book-table_img"
+            src="${book.image}"
+            alt="${book.title} book"
+        />
+        ${book.title}
+    </td>
+    <td>${book.desc.slice(0,50)}...</td>
+    <td>${book.category}</td>
+    <td>Dan Brown<i data-id="${book.id}" class="fa-solid fa-trash"></i></td>
+</tr>
+    `).join('')
+
+})
+
+booksTable.addEventListener('click', (e)=>{
+    let isTrashIcon = e.target.classList.contains('fa-trash')  
+    if(isTrashIcon){
+        const bookId = e.target.dataset.id
+        // console.log(e.target.dataset.id);
+        deleteData('books/',bookId)
+    }
+})

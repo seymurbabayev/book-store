@@ -13,6 +13,9 @@ body {
 button:hover {
     opacity: 0.8;
 }
+p {
+    margin-bottom: 0
+}
 
 .admin-login {
     background-color: var(--mainColorRed);
@@ -131,7 +134,9 @@ main {
     padding: 10px 30px;
     width: 40%;
     max-width: 395px;
+    outline: none;
 }
+
 .search-btn {
     padding: 12px 24px;
     border: none;
@@ -184,6 +189,10 @@ main {
     padding: 16px 30px 30px 30px;
     font-family: var(--fontRoboto);
     color: #030102;
+}
+.form-control:focus {
+    border-color: unset;
+    box-shadow: unset;
 }
 form input,
 form textarea,
@@ -249,6 +258,11 @@ td {
     overflow-y: auto;
     margin-bottom: 100px;
     scrollbar-width: none;
+}
+
+.book-table_img {
+    width: 27px;
+    height: 36px;
 }
 
 .fa-trash {
