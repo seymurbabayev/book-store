@@ -55,7 +55,7 @@ document.querySelector(".address_Input").value = "";
 document.querySelector(".email_Input").value = "";
 document.querySelector(".phone_Input").value = "";
 document.querySelector("#contactTextarea").value = "";
-showMessage("Successful process", false);
+// showMessage("Successful process", false);
 textLength.textContent = "0";
 console.log("contactOb", contactOb);
 }
