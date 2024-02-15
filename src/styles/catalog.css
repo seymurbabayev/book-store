@@ -23,16 +23,24 @@ body{
 .catalog_categories ul{
   display: flex;
   align-items: center;
+  flex-direction: row;
   gap: 40px;
+  width: 30px;
 }
 
-.catalog_categories ul li a{
+/* .catalog_categories li{
+ 
+
+} */
+.catalog_categories  {
   color: #241400;
   font-size: 13px;
   font-style: normal;
   font-weight: 400;
-  line-height: 196.187%; /* 25.504px */
+  line-height: 196.187%; 
   white-space: nowrap;
+  border: none;
+  background-color: #FFFAF5 ;
  
 }
 .catalog_categories::-webkit-scrollbar {

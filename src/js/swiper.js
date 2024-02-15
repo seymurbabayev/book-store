@@ -1,6 +1,8 @@
+
 const swiper = new Swiper('.swiper', {
   // Optional parameters
-  slidesPerView:5,
+  slidesPerView: 10 ,
+  spaceBetween: 20 ,
   direction: 'horizontal',
   loop: true,
   // Navigation arrows
