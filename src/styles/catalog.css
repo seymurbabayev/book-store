@@ -2,6 +2,9 @@
 @import './header.css';
 @import'./footer.css';
 
+a {
+  text-decoration: none;
+}
 
 body{
   background-color: #FFFAF5;
@@ -19,11 +22,8 @@ body{
 }
 .catalog_categories ul{
   display: flex;
-  /* justify-content: center; */
   align-items: center;
   gap: 40px;
-  
-
 }
 
 .catalog_categories ul li a{
@@ -125,3 +125,5 @@ body{
     display: none;
   }
 }
+
+

@@ -6,130 +6,142 @@
 body{
   background-color: var(--mainBodyColor);
 }
+main{
+  padding: 0 20px 0 80px;
+  margin-top: 98px;
 
-.search-sec {
-    width: 80%;
-    margin: 10% 16%;
-  }
-  
-  .search-sec h2 {
-    font-size: 36px;
-    font-family: "Montserrat";
-    color: #241400;
-    font-weight: 700;
-    line-height: 70.63px;
-  }
-  
-  .search-main {
-    display: flex;
-  }
-  
-  .search-form {
-    width: 40%;
-    margin-right: 25px;
-    margin-top: 20px;
-  }
-  
-  .search-form form {
+}
+
+
+
+  .search-line{
     display: flex;
     flex-direction: column;
-    width: 90%;    
-  }
-  
-  .search-form input {
-    padding-left: 27px;
-    height: 69px;
-    border: 1px solid rgba(206, 206, 206, 1);
-    border-radius: 5px;
-    margin: 44px 0;
-    font-size: 23px;
-  }
-  
-  .search-form input::placeholder {
-    color: #241400;
-    font-size: 23px;
-    font-family: Crimson Text;
-  }
-  
-  .search-form button {
-    height: 65px;
-    border: none;
-    border-radius: 5px;
-    background-color: #e16a00;
-    color: #fff;
-    font-size: 30px;
-    font-family: Crimson Text;
-  }
-  
-  
-  
-  @media screen and (max-width:1250px){
-    .search-sec {
-        width: 80%;
-         margin: 0 auto;
-         margin-top: 134px;
-    }
-  
-    .search-main {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-    }  
-  
-    .search_section h2 {
-        text-align: center;
-    }
+    gap: 44px;
+    width: 100%;
     
-    .search-form {
-        width: 70%;
-    }
-  
-    .search-form form {
-        margin: 0 auto;        
-    }
-  
-  }
-  
-  @media screen and (max-width:768px){
-   
-    .search-form {
-        width: 100%;
-    }
-  
-  .slider.slider_search {
-    position: relative;
-    width: 60%;
-  }
-  
-  #left-search {
-    position: absolute;
-    left: -30px;
-    top: 50%;
-  }
-  
-  #right-search {
-    position: absolute;
-    right: -30px;
-    top: 50%;
-  }
-   
-  
-  #list_search {
+}
+.search-title{
+color:  #241400;
+font-family: Montserrat;
+font-size: 36px;
+
+font-weight: 700;
+line-height: 196.187%; 
+}
+.input-search{
+color: #241400;
+font-family: "Crimson Text";
+font-size: 23px;
+font-weight: 400;
+border-radius: 5px;
+border: 1px solid #CECECE;
+padding-left: 28px;
+background: #FFF;
+height: 10%;
+width: 100%;
+}
+.btn-search{
+    border-radius: 5px;
+background: #E16A00;
+color: #FFF;
+text-align: center;
+font-family: "Crimson Text";
+font-size: 20px;
+font-weight: 400;
+border: none;
+padding: 12px 0 12px 0;
+}
+  .arrows{
     display: flex;
-    width: max-content;
-  }
+    align-items: center;
+    gap: 34px;
+    margin-top: 70px;
+   
+}
+
+.search-sec{
+  display: flex;
+}
+
+.slider{
   
-  #formList_search {
-    width: 1280px;
-    max-width: 100%;
-    overflow: auto;
-    margin: 50px auto 50px;
-    scroll-behavior: smooth;
-    scroll-snap-type: both;
-  }
+    width: 85%;
+    background: #FFF;
+box-shadow: 0px 4px 15px 0px rgba(0, 0, 0, 0.25);
+padding: 64px 0 90px 31px;
+height: 100%;
+
+}
+.texts{
+    display: flex;
+    gap: 38px;
+}
+.book-text{
+    padding-right: 56px;
+}
+.main-section{
+    display: flex;
+    flex-direction: row;
+    gap: 94px;
+    justify-content: space-between;  
+}
+.arrow-btn{
+    border: none;
+    background-color: #FFFAF5;
+    height: 50px;
+    
+    
+} 
   
-  #formList_search::-webkit-scrollbar {
-    display: none;
-  }
   
+  
+@media only screen and (max-width: 1200px){
+  body{
+      padding: 0;
   }
+  .book-text{
+      padding: 0;
+  }
+ .main-section{
+  display: flex;
+  flex-wrap: wrap;
+ }
+ .arrows{
+  display: -webkit-box;
+ -webkit-box-pack: center;
+  margin-top: 80px;
+  padding: 0 14px 0 16px;
+ }
+ .search-line{
+  align-items: center;
+ }
+ .arrow-btn{
+  display: none;
+  padding: 0;
+ }
+ .slider{
+  box-shadow: none;
+  background-color: #FFFAF5;
+  text-align: center;
+  padding: 0;
+  width: 50%;
+ }
+ .texts{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+ }
+ .input-search{
+  width: 50%;
+  padding: 20px 0 16px 16px;
+  height: 50px;
+ }
+ .btn-search{
+  width: 50%;
+  height: 50px;
+ }
+}
+  
+
+
