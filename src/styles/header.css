@@ -1,6 +1,6 @@
-
+@import './root.css';
 header{
-    font-family: 'Montserrat', sans-serif;
+    font-family: var(--fontMons);
     width: 100%;
     background: #fffaf5;
     padding-top: 31px;
@@ -45,6 +45,7 @@ header{
     background: #fffaf5;
     cursor: pointer;
 }
+
 .modal-join{
     display: none;
 }
@@ -102,6 +103,7 @@ header{
     background: #FFF;
     outline: none;
 
+  
     /* input text style */
     color: #797667;
     font-size: 19px;
