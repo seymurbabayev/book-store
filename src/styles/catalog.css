@@ -5,6 +5,10 @@
 a {
   text-decoration: none;
 }
+h5,p{
+  margin-bottom: 0;
+}
+
 
 body{
   background-color: #FFFAF5;
@@ -23,16 +27,12 @@ body{
 .catalog_categories ul{
   display: flex;
   align-items: center;
-  flex-direction: row;
-  gap: 40px;
-  width: 30px;
+  gap: 10px;
 }
 
-/* .catalog_categories li{
  
 
-} */
-.catalog_categories  {
+.catalog_categories ul li button  {
   color: #241400;
   font-size: 13px;
   font-style: normal;
@@ -40,7 +40,7 @@ body{
   line-height: 196.187%; 
   white-space: nowrap;
   border: none;
-  background-color: #FFFAF5 ;
+  background-color:transparent ;
  
 }
 .catalog_categories::-webkit-scrollbar {
@@ -80,7 +80,7 @@ body{
   position: relative;
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 6px;
 }
 .catalog_box_item img{
   width: 100%;
@@ -94,7 +94,7 @@ body{
   font-size: 9px;
   font-style: normal;
   font-weight: 900;
-  line-height: 196.187%; /* 17.657px */
+  line-height: 196.187%; 
   text-transform: uppercase;
   top: 0;
   right: 0;
@@ -104,8 +104,15 @@ body{
   color: #241400;
   font-size: 12px;
   font-style: normal;
-  font-weight: 400;
-  line-height: 196.187%; /* 23.542px */
+  font-weight: 700;
+  height: 25px;
+
+}
+.catalog_box_item p{
+  height: 34px;
+  font-size: 12px;
+
+  
 }
 .catalog_box_item a{
   border-radius: 3px;

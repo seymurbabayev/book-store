@@ -54,6 +54,20 @@ function convertData(d) {
 
   return myNewData;
 }
+function convertDatas(d) {
+  const newData = Object.entries(d);
+
+  const myNewData = newData.map((kicikArr) => {
+      const newObj = {
+          id: kicikArr[0],
+          name: kicikArr[1],
+      };
+
+      return newObj;
+  });
+
+  return myNewData;
+}
 readData("/books")
 .then((data) =>{
   const desc = convertData(data);
@@ -64,40 +78,50 @@ readData("/books")
 .catch((error) => console.error("Error reading data:", error));
 
 
-// readData("/category")
-// .then((data) =>{
+readData("/category")
+.then((data) =>{
+  const list = convertDatas(data);
+  renderCategorys(list)
 
-// const categorys = Object.values(data)
 
-//   // console.log(categorys);
-//   renderCategorys(categorys)
-// })
-// .catch((error) => console.error("Error reading data:", error));
+})
+.catch((error) => console.error("Error reading data:", error));
 
-// function renderCategorys(list){
-//    category.innerHTML = list.map((item)=>{
-//     return`
-//     <div class="catalog_categories" >
-//     <ul>
-//          <li>
-//          <button type="button" class="catalog_categories">${item}</button>
-//         </li>
+function renderCategorys(list){
+   category.innerHTML = list.map((item)=>{
+    return`
+    
+         <li>
+         <button type="button" class="catalog_categories" catID="${item.id}">${item.name}</button>
+        </li>
         
-//     </ul>
-// </div>
-//     `
-//   }).join("")
+   
+    `
+  }).join("");
+  // let buttons = document.getElementsByClassName("catalog_categories");
+  // for(let i = 0; i < buttons.length; i++ ){
+  //   buttons[i].addEventListener("click", function(){
+  //     let idName = buttons[i].getAttribute("catID");
+  //     ge
+  //   })
+  // }
 
-// }
+}
 
+
+function getBooks(list){
+  
+
+}
 
 function renderAllBooks(list){
     allBooks.innerHTML = list.map(item =>
         `<div class="swiper-slide" >
         <div class="catalog_box_item">
             <img src="${item.image}" alt="">
-            <span>${item.newcheck === true ? 'New' : 'Bestseller'}</span>
+            <span>${item.newcheck === true ? 'New' : ''}</span>
             <h5>${item.title}</h5>
+            <p>${item.author}</p>
             <a href="../pages/book.html" >Read more</a>
         </div>
     </div> `).join("")
@@ -117,6 +141,7 @@ function renderNew(datas){
      <img src="${item.image}" alt="">
     <span>New</span>
      <h5>${item.title}</h5>
+     <p>${item.author}</p>
       <a href="#">Read more</a>
       </div>
    </div>
@@ -138,8 +163,9 @@ function renderBestSeller(datas){
     <div class="swiper-slide">
      <div class="catalog_box_item">
      <img src="${item.image}" alt="">
-    <span >${item.newcheck === true ? 'New' : 'Bestseller'}</span>
+    <span >${item.newcheck === true ? 'New' : ''}</span>
      <h5>${item.title}</h5>
+     <p>${item.author}</p>
       <a href="#">Read more</a>
       </div>
    </div>
