@@ -87,7 +87,7 @@ listenForChanges('books', (data)=>{
     </td>
     <td>${book.desc.slice(0,50)}...</td>
     <td>${book.category}</td>
-    <td>Dan Brown<i data-id="${book.id}" class="fa-solid fa-trash"></i></td>
+    <td>${book.author}<i data-id="${book.id}" class="fa-solid fa-trash"></i></td>
 </tr>
     `).join('')
 
