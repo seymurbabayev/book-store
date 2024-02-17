@@ -1,5 +1,5 @@
 import { auth, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "./firebase.js";
-import { listenForChanges, convertData, deleteData } from "./firebase.js";
+import { readData, listenForChanges, convertData, deleteData } from "./firebase.js";
 
 const usernameInp = document.querySelector(".username-input");
 const passwordInp = document.querySelector(".password-input");
@@ -10,6 +10,7 @@ const adminLoginScreen = document.querySelector(".admin-login");
 const adminPanelScreen = document.querySelector(".admin-panel");
 
 const booksTable = document.querySelector('#booksTable');
+const contactTable = document.querySelector('#contactTable');
 
 // const trashIcons = document.querySelectorAll('.fa-trash')
 // console.log(trashIcons);
@@ -71,6 +72,7 @@ logoutBtn.addEventListener("click", async function (e) {
 });
 
 listenForChanges('books', (data)=>{
+    console.log(data);
     const books = convertData(data)
     console.log(books);
 
@@ -87,7 +89,7 @@ listenForChanges('books', (data)=>{
     </td>
     <td>${book.desc.slice(0,50)}...</td>
     <td>${book.category}</td>
-    <td>${book.author}<i data-id="${book.id}" class="fa-solid fa-trash"></i></td>
+    <td>${book.author}<i data-id="${book.id}" class="fa-solid fa-trash ps-1"></i></td>
 </tr>
     `).join('')
 
@@ -100,4 +102,20 @@ booksTable.addEventListener('click', (e)=>{
         // console.log(e.target.dataset.id);
         deleteData('books/',bookId)
     }
+})
+
+readData('contacts')
+.then((data) =>{
+    const contactInfo = convertData(data)
+    console.log(contactInfo);
+    contactTable.innerHTML = contactInfo.map((el, i) =>`
+        <tr>
+            <td scope="row">${i + 1}</td>
+            <td>${el.name_Input}</td>
+            <td>${el.address_Input}</td>
+            <td>${el.email_Input}</td>
+            <td>${el.phone_Input}</td>
+        </tr>
+        `
+    ).join('')
 })

@@ -127,7 +127,7 @@ export function writeSetData(path, data) {
     return setKey.key;
 }
 // Read once
-const readData = (path) => {
+export const readData = (path) => {
     const dataRef = ref(database, path);
     return get(dataRef).then((snapshot) => snapshot.val());
 };
