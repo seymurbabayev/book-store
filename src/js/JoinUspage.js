@@ -1,4 +1,3 @@
-// Firebase konfiqurasiyası və tətbiqin başlatılması
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
 import {
   getDatabase,
@@ -30,9 +29,16 @@ const users = ref(database,"users")
 let fullname_input = document.querySelector("#fullname_input")
 let email_input = document.querySelector("#email_input")
 let join_btn = document.querySelector("#join_btn")
-let join_tbody = document.querySelector("#join_tbody")
+let join_btn1 = document.querySelector("#join-btn")
+// let join_tbody = document.querySelector("#join_tbody")
 
-let id = 1 
+// let modal_body = document.querySelector("#modal_body")
+
+join_btn1.addEventListener("click",function(){
+    modal_body.classList.add("show")
+})
+
+// let id = 1 
 join_btn?.addEventListener('click', function(e){
 e.preventDefault();
  
@@ -58,21 +64,27 @@ push(users,userInfo)
 alert("Added")
 })
 
+
+
 //firebase de users bolmesi yaratt
 
-function render(){
-  onValue(users, (snapshot) => {
-    const data = snapshot.val();
-    let dataToArr = Object.entries(data)
-    let dataItem = dataToArr.map((item) => `
-          <tr>
-            <td class="mobil-id">${id++}</td>
-            <td>${item[1].fullname}</td>
-            <td>${item[1].email}</td>
-          </tr>
-        `
-    ).join("")
-    join_tbody ? join_tbody.innerHTML = dataItem   : null
-  });
-}
-render()
+// function render(){
+//   onValue(users, (snapshot) => {
+//     const data = snapshot.val();
+//     let dataToArr = Object.entries(data)
+//     let dataItem = dataToArr.map((item) => `
+//           <tr>
+//             <td class="mobil-id">${id++}</td>
+//             <td>${item[1].fullname}</td>
+//             <td>${item[1].email}</td>
+//           </tr>
+//         `
+//     ).join("")
+//     join_tbody ? join_tbody.innerHTML = dataItem   : null
+//   });
+// }
+// render()
+
+
+
+

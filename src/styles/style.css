@@ -11,6 +11,11 @@ body {
 
   margin: auto;
 }
+/* .btn-close{
+ font-size: 24px;
+ margin-left: 95% ;
+ 
+} */
 
 .home1_container {
   color: var(--fontColor);
