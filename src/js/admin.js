@@ -82,7 +82,7 @@ readData('users')
         <td>${el.fullname}</td>
         <td>${el.email}</td>
     </tr>
-    `)
+    `).join('')
 })
 
 listenForChanges('books', (data)=>{
