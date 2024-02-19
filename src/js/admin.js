@@ -11,6 +11,7 @@ const adminPanelScreen = document.querySelector(".admin-panel");
 
 const booksTable = document.querySelector('#booksTable');
 const contactTable = document.querySelector('#contactTable');
+const usersTable = document.querySelector('#usersTable');
 
 // const trashIcons = document.querySelectorAll('.fa-trash')
 // console.log(trashIcons);
@@ -70,6 +71,19 @@ logoutBtn.addEventListener("click", async function (e) {
     e.preventDefault();
     await signOut(auth);
 });
+
+readData('users')
+.then(data =>{
+    const users = convertData(data)
+    console.log(users);
+    usersTable.innerHTML = users.map((el, i) => `
+    <tr>
+        <td scope="row">${i + 1}</td>
+        <td>${el.fullname}</td>
+        <td>${el.email}</td>
+    </tr>
+    `)
+})
 
 listenForChanges('books', (data)=>{
     console.log(data);
