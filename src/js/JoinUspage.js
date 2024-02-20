@@ -30,9 +30,14 @@ let fullname_input = document.querySelector("#fullname_input")
 let email_input = document.querySelector("#email_input")
 let join_btn = document.querySelector("#join_btn")
 let join_btn1 = document.querySelector("#join-btn")
+let rejectBtn = document.querySelector("#rejectBtn")
+let modal_body = document.querySelector("#modal_body")
 // let join_tbody = document.querySelector("#join_tbody")
 
-// let modal_body = document.querySelector("#modal_body")
+rejectBtn.addEventListener("click", function(){
+  modal_body.classList.remove("show")
+
+})
 
 join_btn1.addEventListener("click",function(){
     modal_body.classList.add("show")

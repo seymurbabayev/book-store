@@ -49,9 +49,28 @@
                 <button id="join-btn" class="header_join_btn">
                     <img src="../assets/images/user.svg" alt="">
                     Join us
-                </button>
+                  </button>
             </div>
         </nav>
+        <div id="modal_body" class="modal-join">
+        
+            <div class="modal_main">
+                <button type="button" id="rejectBtn" class="btn-close reject-btn" aria-label="Close"></button>
+              <p class="modal_head_title">Join Us</p>
+              <form class="modal_form" action="">
+                <div class="modal_form_input_group">
+                  <input
+                  id="fullname_input"
+                    placeholder="Full name"
+                    class="modal_input"
+                    type="text"
+                  />
+                  <input id="email_input" placeholder="Email" class="modal_input" type="text" />
+                </div>
+                <button id="join_btn" class="modal_join_btn">Join</button>
+              </form>
+            </div>
+          </div>
     </header>
 
     <main >
@@ -70,7 +89,7 @@
                         <h2>All Books</h2>
                     </div>
                     <div class="catalog_swiper">
-                        <div class="swiper">
+                        <div class="swiper swiperAll">
                             <div class="swiper-wrapper" id="allBooks">
                                
                             </div>
@@ -95,7 +114,7 @@
                         <h2>Besteller</h2>
                     </div>
                     <div class="catalog_swiper">
-                        <div class="swiper">
+                        <div class="swiper swiperBestsell">
                             <div class="swiper-wrapper" id="bestseller">
                                 <
                             </div>
@@ -119,7 +138,7 @@
                         <h2>New releases</h2>
                     </div>
                     <div class="catalog_swiper">
-                        <div class="swiper">
+                        <div class="swiperNew swiper">
                             <div class="swiper-wrapper" id="new">
                                 
                             </div>
@@ -200,7 +219,7 @@
       </footer>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-<script type="module" src="../js/swiper.js"></script>
+<script type="module" src="../js/JoinUspage.js"></script>
 <script type="module" src="../js/catalog.js"></script>
 
 

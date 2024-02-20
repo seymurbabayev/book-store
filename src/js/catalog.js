@@ -4,7 +4,7 @@ const newchek = document.querySelector("#new");
 const category = document.querySelector("#category")
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-import {  getDatabase, ref, get, set, push  } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
+import {  getDatabase, ref, get, set, push, child, onValue  } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
 // import { createData } from "./firebase";
 
 
@@ -98,21 +98,66 @@ function renderCategorys(list){
    
     `
   }).join("");
-  // let buttons = document.getElementsByClassName("catalog_categories");
-  // for(let i = 0; i < buttons.length; i++ ){
-  //   buttons[i].addEventListener("click", function(){
-  //     let idName = buttons[i].getAttribute("catID");
-  //     ge
-  //   })
-  // }
+  let buttons = document.getElementsByClassName("catalog_categories");
+  for(let i = 0; i < buttons.length; i++ ){
+    buttons[i].addEventListener("click", function(){
+      console.log("click");
+    })
+  }
 
 }
 
 
-function getBooks(list){
+// function getBooks(list){
+//   const dataBase = ref(database);
   
+// }
 
-}
+// function getBook(category_id) {
+//   const db_ref = ref(database)
+//   get(child(db_ref, 'books')).then((snapshot) => {
+//       let book_data
+//       if (snapshot.exists()) {
+//           let dataArr = Object.entries(snapshot.val())
+//           let data_list = dataArr.map((item) => {
+//               const newObj = {
+//                   id: item[0],
+//                   name: item[1],
+//               };
+//               return newObj
+//           })
+//           let filtered_data = data_list.filter((book) => {
+//               return book.category === category_id
+//           })
+//           if (category_id) {
+//               book_data = filtered_data
+//           } else {
+//               book_data = data_list
+//           }
+        
+//           let data_list_map = book_data.map((item, index) => {
+//               return `
+//               <div class="swiper-slide">
+//                   <div class="catalog_box_item">
+//                       <img src="${item.image}" alt="">
+//                      <span> ${item.newcheck ? 'New' : ''}</span>
+//             <p>${item.author}</p>
+//             <h5>${item.title}</h5>
+//             <a href="../pages/book.html" >Read more</a>
+
+//                   </div>
+//               </div>
+//       `
+//           }).join("")
+//           allBooks.innerHTML = data_list_map;
+//           // swipercat.update()
+//           return data_list
+//       }
+//   }).catch((err) => {
+//       console.log(err, 'err')
+//   })
+// }
+// getBook()
 
 function renderAllBooks(list){
     allBooks.innerHTML = list.map(item =>
@@ -125,6 +170,7 @@ function renderAllBooks(list){
             <a href="../pages/book.html" >Read more</a>
         </div>
     </div> `).join("")
+    swiperAll.update()
 }
 function renderNew(datas){
   const data = convertData(datas);
@@ -147,6 +193,7 @@ function renderNew(datas){
    </div>
     `
   }).join("")
+  swiperNew.update()
 }
 
 
@@ -171,8 +218,109 @@ function renderBestSeller(datas){
    </div>
     `
   }).join("")
+  swiperBestsell.update()
 }
 
+
+const swiperBestsell = new Swiper('.swiper.swiperBestsell', {
+  // Optional parameters
+  slidesPerView: 10 ,
+  spaceBetween: 20 ,
+  direction: 'horizontal',
+  loop: true,
+  // Navigation arrows
+  navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+  },
+  breakpoints: {
+      // when window width is >= 320px
+      320: {
+          slidesPerView: 1.5,
+          spaceBetween: 20
+      },
+      // when window width is >= 480px
+      480: {
+          slidesPerView: 2,
+          spaceBetween: 20
+      },
+      // when window width is >= 640px
+      767: {
+          slidesPerView: 3,
+          spaceBetween: 20
+      },
+      1200: {
+          slidesPerView: 5,
+          spaceBetween: 20
+      }
+  }
+});
+const swiperAll = new Swiper('.swiper.swiperAll', {
+  // Optional parameters
+  slidesPerView: 10 ,
+  spaceBetween: 20 ,
+  direction: 'horizontal',
+  loop: true,
+  // Navigation arrows
+  navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+  },
+  breakpoints: {
+      // when window width is >= 320px
+      320: {
+          slidesPerView: 1.5,
+          spaceBetween: 20
+      },
+      // when window width is >= 480px
+      480: {
+          slidesPerView: 2,
+          spaceBetween: 20
+      },
+      // when window width is >= 640px
+      767: {
+          slidesPerView: 3,
+          spaceBetween: 20
+      },
+      1200: {
+          slidesPerView: 5,
+          spaceBetween: 20
+      }
+  }
+});
+const swiperNew = new Swiper('.swiper.swiperNew', {
+  // Optional parameters
+  slidesPerView: 5 ,
+  spaceBetween: 20 ,
+  direction: 'horizontal',
+  loop: true,
+  // Navigation arrows
+  navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+  },
+  breakpoints: {
+      // when window width is >= 320px
+      320: {
+          slidesPerView: 1.5,
+          spaceBetween: 20
+      },
+      // when window width is >= 480px
+      480: {
+          slidesPerView: 2,
+          spaceBetween: 20
+      },
+      // when window width is >= 640px
+      767: {
+          slidesPerView: 3,
+          spaceBetween: 20
+      },
+      1200: {
+          slidesPerView: 5,
+          spaceBetween: 20
+      }
+  }
+});
 
 
 
