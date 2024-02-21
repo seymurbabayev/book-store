@@ -8,6 +8,7 @@ header{
     padding-right: 5.31% ;
 }
 
+
 .header-navbar{
     width: 100%;
     display: flex;
@@ -45,6 +46,13 @@ header{
     background: #fffaf5;
     cursor: pointer;
 }
+.reject-btn{
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 40px;
+    font-size: 24px;
+}
 
 .modal-join{
     display: none;
@@ -65,6 +73,7 @@ header{
 }
 
 .modal_main{
+    position: relative;
     width: 46.88%;
     background: #fff;
     padding: 70px 55.6px 35px 55.6px;
