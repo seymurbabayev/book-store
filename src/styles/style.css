@@ -167,3 +167,123 @@ h3 {
   flex-direction: column;
   align-items: center;
 }
+
+
+@media screen and (max-width: 1300px) {
+
+.header_buttom {
+  flex-direction: column;
+  margin: 70px 0 50px ;
+}
+.form {
+  align-items: center;
+  margin-right: 0;
+}
+.form_title {
+  font-size: 28px ;
+  margin: 0 0 25px 0;
+}
+.form p {
+  width: 100%;
+  margin-bottom: 40px;
+  text-align: center;
+}
+.form a {
+  width: 290px;
+  justify-content: center;
+  padding: 0;
+}
+.form_2 {
+  margin: 40px 0;
+  text-align: center;
+}
+.delivery-text {
+  padding: 0;
+}
+}
+
+@media screen and (max-width: 992px) {
+
+  .about-des{
+    flex-direction: column;
+  }
+  .form-group2 {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .home1_container {
+    width:100%;
+    padding: 0 15px;
+  }
+
+}
+
+@media screen and (max-width: 675px) {
+
+  main {
+    width:100%;
+    padding: 0 15px;
+  }
+  .header_buttom {
+    flex-direction: column;
+    margin: 70px 0 50px ;
+  }
+  .form {
+    align-items: center;
+    margin-right: 0;
+  }
+  h2 {
+    font-size: 28px ;
+    margin: 0 0 25px 0;
+  }
+  .form p {
+    width: 100%;
+    margin-bottom: 40px;
+  }
+  .form a {
+    width: 290px;
+    justify-content: center;
+    padding: 0;
+  }
+  .form_2 {
+    margin: 40px 0;
+    text-align: center;
+  }
+  .form_2 img {
+    width: 100%;
+  }
+
+  .form-group2 {
+    display: flex; 
+    flex-direction: column;
+    gap: 15px;
+  }
+  .about-des {
+    flex-direction: column;
+  }
+  .form-group2 div {
+    width: 220px;
+  }
+
+  .link-title {
+    margin-right: 0;
+  }
+  .form-group2 {
+    margin: 30px 0;
+  }
+  .link-title {
+    margin-right: 0;
+  }
+  .link-number {
+    margin: 0 20px 0 0;
+  }
+  .delivery-group {
+    margin: 64px 0;
+  }
+  .delivery-group p {
+    margin:12px 0 0 0;
+
+  }
+
+}

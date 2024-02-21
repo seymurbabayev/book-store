@@ -135,3 +135,46 @@ header{
     cursor: pointer;
 }
 
+/* Responsive */
+@media screen and (max-width: 992px) {
+
+    .header_nav {
+        display: none;
+      }
+    
+      .header_join {
+        display: none;
+      }
+      .modal_body.show {
+        background: rgba(36, 20, 0, 0.90);
+      }
+      .modal_main {
+        width: 260px;
+        padding: 44px 21px 57px;
+      }
+      .modal_head_title {
+        height: 50px;
+        font-size: 25px;
+      }
+      .modal_form {
+        margin-top: 11px;
+        gap: 30px;
+      }
+      .modal_form_input_group {
+        gap: 25px;
+      }
+      .modal_input {
+        padding: 13px 0 4px 13px;
+        font-size: 16px;
+        height: 46px;
+      }
+      .modal_input::placeholder {
+        font-size: 16px;
+      }
+      .modal_join_btn {
+        height: 43px;
+        font-size: 18px;
+      }
+
+}
+
