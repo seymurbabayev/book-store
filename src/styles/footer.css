@@ -159,5 +159,24 @@ footer{
       line-height: 196.187%;
       border-top: 1px solid rgba(255, 255, 255, 0.59);
     }
+ 
+
+  .social-media {
+    gap: 17px;
   }
-  
+
+  .social-title {
+    font-size: 18px;
+    font-weight: 900;
+  }
+
+  .social-icons{
+    justify-content: center;
+    gap: 24.47px;
+  }
+
+  .social-icons a img {
+    width: 36px;
+    height: 36px;
+  }
+ }
