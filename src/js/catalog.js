@@ -99,9 +99,10 @@ function renderCategorys(list){
     `
   }).join("");
   let buttons = document.getElementsByClassName("catalog_categories");
-  for(let i = 0; i < buttons.length; i++ ){
+  for(let i = 1; i < buttons.length; i++ ){
     buttons[i].addEventListener("click", function(){
-      console.log("click");
+      let id = buttons[i].getAttribute("catID")
+      getBook(id)
     })
   }
 
@@ -109,55 +110,56 @@ function renderCategorys(list){
 
 
 // function getBooks(list){
-//   const dataBase = ref(database);
+  
   
 // }
 
-// function getBook(category_id) {
-//   const db_ref = ref(database)
-//   get(child(db_ref, 'books')).then((snapshot) => {
-//       let book_data
-//       if (snapshot.exists()) {
-//           let dataArr = Object.entries(snapshot.val())
-//           let data_list = dataArr.map((item) => {
-//               const newObj = {
-//                   id: item[0],
-//                   name: item[1],
-//               };
-//               return newObj
-//           })
-//           let filtered_data = data_list.filter((book) => {
-//               return book.category === category_id
-//           })
-//           if (category_id) {
-//               book_data = filtered_data
-//           } else {
-//               book_data = data_list
-//           }
+function getBook(category_id) {
+  const db_ref = ref(database)
+  get(child(db_ref, 'books')).then((snapshot) => {
+      let book_data
+      if (snapshot.exists()) {
+          let dataArr = Object.entries(snapshot.val())
+          let data_list = dataArr.map((item) => {
+              const newObj = {
+                  id: item[0],
+                  ... item[1],
+              };
+              // console.log(newObj);
+              return newObj
+          })
+          let filtered_data = data_list.filter((book) => {
+              return book.category === category_id
+          })
+          if (category_id) {
+              book_data = filtered_data
+          } else {
+              book_data = data_list
+          }
         
-//           let data_list_map = book_data.map((item, index) => {
-//               return `
-//               <div class="swiper-slide">
-//                   <div class="catalog_box_item">
-//                       <img src="${item.image}" alt="">
-//                      <span> ${item.newcheck ? 'New' : ''}</span>
-//             <p>${item.author}</p>
-//             <h5>${item.title}</h5>
-//             <a href="../pages/book.html" >Read more</a>
+          let data_list_map = book_data.map((item, index) => {
+              return `
+              <div class="swiper-slide">
+                  <div class="catalog_box_item">
+                      <img src="${item.image}" alt="">
+                     <span> ${item.newcheck === true ? 'New' : ''}</span>
+            <p>${item.author}</p>
+            <h5>${item.title}</h5>
+            <a href="../pages/book.html" >Read more</a>
 
-//                   </div>
-//               </div>
-//       `
-//           }).join("")
-//           allBooks.innerHTML = data_list_map;
-//           // swipercat.update()
-//           return data_list
-//       }
-//   }).catch((err) => {
-//       console.log(err, 'err')
-//   })
-// }
-// getBook()
+                  </div>
+              </div>
+      `
+          }).join("")
+          allBooks.innerHTML = data_list_map;
+          swiperAll.update()
+          return data_list
+      }
+  }).catch((err) => {
+      console.log(err, 'err')
+  })
+}
+getBook()
 
 function renderAllBooks(list){
     allBooks.innerHTML = list.map(item =>
