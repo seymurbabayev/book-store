@@ -4,6 +4,9 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>About Page</title>
+        
+        <link rel="icon" href="../assets/images/favicon.svg" type="image/x-icon" />
+        
         <!-- Reset -->
         <link rel="stylesheet" href="../styles/reset.css" />
 
@@ -50,11 +53,31 @@
                     </button>
                 </div>
             </nav>
+            <div id="modal_body" class="modal-join">
+        
+                <div class="modal_main">
+                  <button type="button" id="rejectBtn" class="btn-close reject-btn" aria-label="Close"></button>
+                  <p class="modal_head_title">Join Us</p>
+                  <form class="modal_form" action="">
+                    <div class="modal_form_input_group">
+                      <input
+                      id="fullname_input"
+                        placeholder="Full name"
+                        class="modal_input"
+                        type="text"
+                      />
+                      <input id="email_input" placeholder="Email" class="modal_input" type="text" />
+                    </div>
+                    <button id="join_btn" class="modal_join_btn">Join</button>
+                  </form>
+                </div>
+              </div>
         </header>
 
         <main>
-            <div class="about_page">
-                <div class="about_paragraph">
+            <div  id="aboutArea">
+            <!-- <div class="about_page">
+                <div class="about_paragraph" >
                     <h1 class="about_title">About Store</h1>
                     <p class="about_text">
                         We work without holidays and weekends! Residents of Kiev can receive an order on the
@@ -68,13 +91,33 @@
                 <div class="about_img">
                     <img src="../assets/images/3ayi.svg" alt="Mark Manson 3 Books" />
                 </div>
-            </div>
+            </div> -->
+        </div>
+            <section>
+                <div class="social-media">
+                    <p class="social-title">
+                      Follow us on social media
+                    </p>
+                    <div class="social-icons">
+                        <a>
+                          <img src="../assets/images/facebook.svg" alt="">
+                        </a>
+                        <a>
+                          <img src="../assets/images/twitter.svg" alt="">
+                        </a>
+                        <a>
+                          <img src="../assets/images/instagram.svg" alt="">
+                        </a>
+                    </div>
+                </div>
+              </div>
+            </section>
         </main>
 
         <footer id="footer">
             <div class="footer-top">
                 <div class="footer_logo">
-                    <img src="../assets/images/logo-admin.svg" alt="" />
+                    <img src="../assets/images/logo-white.svg" alt="" />
                 </div>
                 <div class="footer_nav">
                     <ul class="footer_list">
@@ -106,5 +149,7 @@
             </div>
             <p class="footer_title">All rights reserved © 2003-2021 LIBRARY TERMS OF USE | Privacy Policy</p>
         </footer>
+        <script type="module" src="../js/JoinUspage.js"></script>
+        <script type="module" src="../js/aboutpage.js"></script>
     </body>
 </html>

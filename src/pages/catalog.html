@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <link rel="icon" href="../assets/images/favicon.svg" type="image/x-icon" />
     <!--reset css-->
     <link rel="stylesheet" href="../styles/reset.css">
 
@@ -48,43 +49,39 @@
                 <button id="join-btn" class="header_join_btn">
                     <img src="../assets/images/user.svg" alt="">
                     Join us
-                </button>
+                  </button>
             </div>
         </nav>
+        <div id="modal_body" class="modal-join">
+        
+            <div class="modal_main">
+                <button type="button" id="rejectBtn" class="btn-close reject-btn" aria-label="Close"></button>
+              <p class="modal_head_title">Join Us</p>
+              <form class="modal_form" action="">
+                <div class="modal_form_input_group">
+                  <input
+                  id="fullname_input"
+                    placeholder="Full name"
+                    class="modal_input"
+                    type="text"
+                  />
+                  <input id="email_input" placeholder="Email" class="modal_input" type="text" />
+                </div>
+                <button id="join_btn" class="modal_join_btn">Join</button>
+              </form>
+            </div>
+          </div>
     </header>
 
-    <main>
+    <main >
         <div class="container">
-            <div class="catalog_container">
-                <div class="catalog_categories">
-                    <ul>
-                        <li>
+            <div class="catalog_container" >
+                <div class="catalog_categories" >
+                    <ul id="category">
+                         <!-- <li>
                             <a href="#">Adventure</a>
-                        </li>
-                        <li>
-                            <a href="#">Novel</a>
-                        </li>
-                        <li>
-                            <a href="#">Mystery and Crime</a>
-                        </li>
-                        <li>
-                            <a href="#">Classic</a>
-                        </li>
-                        <li>
-                            <a href="#">Drama</a>
-                        </li>
-                        <li>
-                            <a href="#">Self-development</a>
-                        </li>
-                        <li>
-                            <a href="#">Psychological and Philosophical</a>
-                        </li>
-                        <li>
-                            <a href="#">Science Fiction</a>
-                        </li>
-                        <li>
-                            <a href="#">Fantastic</a>
-                        </li>
+                        </li> -->
+                        
                     </ul>
                 </div>
                 <div class="catalog_box">
@@ -92,74 +89,9 @@
                         <h2>All Books</h2>
                     </div>
                     <div class="catalog_swiper">
-                        <div class="swiper">
-                            <div class="swiper-wrapper">
-                                <div class="swiper-slide">
-                                    <div class="catalog_box_item">
-                                        <img src="../assets/images/mozgi.svg" alt="">
-                                        <span>New</span>
-                                        <h5>Konstantin Koptelov</h5>
-                                        <a href="#">Read more</a>
-                                    </div>
-                                </div>
-                                <div class="swiper-slide">
-                                    <div class="catalog_box_item">
-                                        <img src="../assets/images/mozgi.svg" alt="">
-
-                                        <h5>Konstantin Koptelov</h5>
-                                        <a href="#">Read more</a>
-                                    </div>
-                                </div>
-                                <div class="swiper-slide">
-                                    <div class="catalog_box_item">
-                                        <img src="../assets/images/mozgi.svg" alt="">
-                                        <span>New</span>
-                                        <h5>Konstantin Koptelov</h5>
-                                        <a href="#">Read more</a>
-                                    </div>
-                                </div>
-                                <div class="swiper-slide">
-                                    <div class="catalog_box_item">
-                                        <img src="../assets/images/mozgi.svg" alt="">
-                                        <span>New</span>
-                                        <h5>Konstantin Koptelov</h5>
-                                        <a href="#">Read more</a>
-                                    </div>
-                                </div>
-                                <div class="swiper-slide">
-                                    <div class="catalog_box_item">
-                                        <img src="../assets/images/mozgi.svg" alt="">
-                                        <span>New</span>
-
-                                        <h5>Konstantin Koptelov</h5>
-                                        <a href="#">Read more</a>
-                                    </div>
-                                </div>
-                                <div class="swiper-slide">
-                                    <div class="catalog_box_item">
-                                        <img src="../assets/images/mozgi.svg" alt="">
-
-                                        <h5>Konstantin Koptelov</h5>
-                                        <a href="#">Read more</a>
-                                    </div>
-                                </div>
-                                <div class="swiper-slide">
-                                    <div class="catalog_box_item">
-                                        <img src="../assets/images/mozgi.svg" alt="">
-                                        <span>New</span>
-
-                                        <h5>Konstantin Koptelov</h5>
-                                        <a href="#">Read more</a>
-                                    </div>
-                                </div>
-                                <div class="swiper-slide">
-                                    <div class="catalog_box_item">
-                                        <img src="../assets/images/mozgi.svg" alt="">
-
-                                        <h5>Konstantin Koptelov</h5>
-                                        <a href="#">Read more</a>
-                                    </div>
-                                </div>
+                        <div class="swiper swiperAll">
+                            <div class="swiper-wrapper" id="allBooks">
+                               
                             </div>
                             <!-- If we need navigation buttons -->
                             <div class="swiper-button-prev">
@@ -182,72 +114,9 @@
                         <h2>Besteller</h2>
                     </div>
                     <div class="catalog_swiper">
-                        <div class="swiper">
-                            <div class="swiper-wrapper">
-                                <div class="swiper-slide">
-                                    <div class="catalog_box_item">
-                                        <img src="../assets/images/mozgi.svg" alt="">
-                                        <span>New</span>
-                                        <h5>Konstantin Koptelov</h5>
-                                        <a href="#">Read more</a>
-                                    </div>
-                                </div>
-                                <div class="swiper-slide">
-                                    <div class="catalog_box_item">
-                                        <img src="../assets/images/mozgi.svg" alt="">
-
-                                        <h5>Konstantin Koptelov</h5>
-                                        <a href="#">Read more</a>
-                                    </div>
-                                </div>
-                                <div class="swiper-slide">
-                                    <div class="catalog_box_item">
-                                        <img src="../assets/images/mozgi.svg" alt="">
-
-                                        <h5>Konstantin Koptelov</h5>
-                                        <a href="#">Read more</a>
-                                    </div>
-                                </div>
-                                <div class="swiper-slide">
-                                    <div class="catalog_box_item">
-                                        <img src="../assets/images/mozgi.svg" alt="">
-
-                                        <h5>Konstantin Koptelov</h5>
-                                        <a href="#">Read more</a>
-                                    </div>
-                                </div>
-                                <div class="swiper-slide">
-                                    <div class="catalog_box_item">
-                                        <img src="../assets/images/mozgi.svg" alt="">
-
-                                        <h5>Konstantin Koptelov</h5>
-                                        <a href="#">Read more</a>
-                                    </div>
-                                </div>
-                                <div class="swiper-slide">
-                                    <div class="catalog_box_item">
-                                        <img src="../assets/images/mozgi.svg" alt="">
-
-                                        <h5>Konstantin Koptelov</h5>
-                                        <a href="#">Read more</a>
-                                    </div>
-                                </div>
-                                <div class="swiper-slide">
-                                    <div class="catalog_box_item">
-                                        <img src="../assets/images/mozgi.svg" alt="">
-
-                                        <h5>Konstantin Koptelov</h5>
-                                        <a href="#">Read more</a>
-                                    </div>
-                                </div>
-                                <div class="swiper-slide">
-                                    <div class="catalog_box_item">
-                                        <img src="../assets/images/mozgi.svg" alt="">
-
-                                        <h5>Konstantin Koptelov</h5>
-                                        <a href="#">Read more</a>
-                                    </div>
-                                </div>
+                        <div class="swiper swiperBestsell">
+                            <div class="swiper-wrapper" id="bestseller">
+                                <
                             </div>
                             <div class="swiper-button-prev">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="23" height="43" viewBox="0 0 23 43"
@@ -269,72 +138,9 @@
                         <h2>New releases</h2>
                     </div>
                     <div class="catalog_swiper">
-                        <div class="swiper">
-                            <div class="swiper-wrapper">
-                                <div class="swiper-slide">
-                                    <div class="catalog_box_item">
-                                        <img src="../assets/images/mozgi.svg" alt="">
-                                        <span>New</span>
-                                        <h5>Konstantin Koptelov</h5>
-                                        <a href="#">Read more</a>
-                                    </div>
-                                </div>
-                                <div class="swiper-slide">
-                                    <div class="catalog_box_item">
-                                        <img src="../assets/images/mozgi.svg" alt="">
-
-                                        <h5>Konstantin Koptelov</h5>
-                                        <a href="#">Read more</a>
-                                    </div>
-                                </div>
-                                <div class="swiper-slide">
-                                    <div class="catalog_box_item">
-                                        <img src="../assets/images/mozgi.svg" alt="">
-
-                                        <h5>Konstantin Koptelov</h5>
-                                        <a href="#">Read more</a>
-                                    </div>
-                                </div>
-                                <div class="swiper-slide">
-                                    <div class="catalog_box_item">
-                                        <img src="../assets/images/mozgi.svg" alt="">
-
-                                        <h5>Konstantin Koptelov</h5>
-                                        <a href="#">Read more</a>
-                                    </div>
-                                </div>
-                                <div class="swiper-slide">
-                                    <div class="catalog_box_item">
-                                        <img src="../assets/images/mozgi.svg" alt="">
-
-                                        <h5>Konstantin Koptelov</h5>
-                                        <a href="#">Read more</a>
-                                    </div>
-                                </div>
-                                <div class="swiper-slide">
-                                    <div class="catalog_box_item">
-                                        <img src="../assets/images/mozgi.svg" alt="">
-
-                                        <h5>Konstantin Koptelov</h5>
-                                        <a href="#">Read more</a>
-                                    </div>
-                                </div>
-                                <div class="swiper-slide">
-                                    <div class="catalog_box_item">
-                                        <img src="../assets/images/mozgi.svg" alt="">
-
-                                        <h5>Konstantin Koptelov</h5>
-                                        <a href="#">Read more</a>
-                                    </div>
-                                </div>
-                                <div class="swiper-slide">
-                                    <div class="catalog_box_item">
-                                        <img src="../assets/images/mozgi.svg" alt="">
-
-                                        <h5>Konstantin Koptelov</h5>
-                                        <a href="#">Read more</a>
-                                    </div>
-                                </div>
+                        <div class="swiperNew swiper">
+                            <div class="swiper-wrapper" id="new">
+                                
                             </div>
                             <div class="swiper-button-prev">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="23" height="43" viewBox="0 0 23 43"
@@ -353,12 +159,31 @@
                 </div>
             </div>
         </div>
+        <section>
+            <div class="social-media">
+                <p class="social-title">
+                  Follow us on social media
+                </p>
+                <div class="social-icons">
+                    <a>
+                      <img src="../assets/images/facebook.svg" alt="">
+                    </a>
+                    <a>
+                      <img src="../assets/images/twitter.svg" alt="">
+                    </a>
+                    <a>
+                      <img src="../assets/images/instagram.svg" alt="">
+                    </a>
+                </div>
+            </div>
+          </div>
+        </section>
     </main>
 
     <footer id="footer">
         <div class="footer-top">
           <div class="footer_logo">
-            <img src="../assets/images/logo-admin.svg" alt="" />
+            <img src="../assets/images/logo-white.svg" alt="" />
           </div>
           <div class="footer_nav">
             <ul class="footer_list">
@@ -394,6 +219,10 @@
       </footer>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-<script src="../js/swiper.js"></script>
+<script type="module" src="../js/JoinUspage.js"></script>
+<script type="module" src="../js/catalog.js"></script>
+
+
+
 
 </html>
