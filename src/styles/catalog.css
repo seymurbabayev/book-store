@@ -20,7 +20,7 @@ body{
   margin: 100px 0;
 }
 .catalog_categories{
-  max-width: 900px;
+  max-width: 450px;
   margin: 0 auto;
   overflow-x: auto;
 }

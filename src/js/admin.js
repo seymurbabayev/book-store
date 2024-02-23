@@ -9,50 +9,58 @@ const logoutBtn = document.querySelector("#logoutBtn");
 const adminLoginScreen = document.querySelector(".admin-login");
 const adminPanelScreen = document.querySelector(".admin-panel");
 
-const booksTable = document.querySelector('#booksTable');
-const contactTable = document.querySelector('#contactTable');
-const usersTable = document.querySelector('#usersTable');
+const booksTable = document.querySelector("#booksTable");
+const contactTable = document.querySelector("#contactTable");
+const usersTable = document.querySelector("#usersTable");
 
-// const trashIcons = document.querySelectorAll('.fa-trash')
-// console.log(trashIcons);
 
-window.addEventListener("load", checkAuthState);
+window.addEventListener("load", function () {
+    adminLoginScreen.classList.add("d-none");
+    adminPanelScreen.classList.add("d-none");
+    const isSignedIn = localStorage.getItem("signedIn");
+
+    if (isSignedIn) {
+        adminLoginScreen.classList.add("d-none");
+        adminPanelScreen.classList.remove("d-none");
+    }
+    checkAuthState();
+});
 
 joinBtn.addEventListener("click", async function (e) {
     e.preventDefault();
     const username = usernameInp.value.trim();
     const password = passwordInp.value.trim();
-    const alertEl = document.querySelector('#alertEl')
+    const alertEl = document.querySelector("#alertEl");
 
     if (!username || !password) {
-        alertEl.classList.remove('d-none')
-        alertEl.innerHTML = 'All fields must be filled'
+        alertEl.classList.remove("d-none");
+        alertEl.innerHTML = "All fields must be filled";
 
-        setTimeout(()=>{
-            alertEl.classList.add('d-none')
-        },2000)
+        setTimeout(() => {
+            alertEl.classList.add("d-none");
+        }, 2000);
 
         return;
     }
 
     await signInWithEmailAndPassword(auth, username, password)
-    .then(userCredential =>{
-        adminLoginScreen.classList.add('d-none')
-        adminPanelScreen.classList.remove('d-none')
-    })
-    .catch(err => {
-        console.log(err);
-        usernameInp.value = ''
-        passwordInp.value = ''
-        alertEl.classList.remove('d-none')
-        alertEl.innerHTML = 'Username or password are incorrect'
+        .then((userCredential) => {
+            console.log(userCredential);
+            localStorage.setItem("signedIn", "true");
+            adminLoginScreen.classList.add("d-none");
+            adminPanelScreen.classList.remove("d-none");
+        })
+        .catch((err) => {
+            console.log(err);
+            usernameInp.value = "";
+            passwordInp.value = "";
+            alertEl.classList.remove("d-none");
+            alertEl.innerHTML = "Username or password are incorrect";
 
-        
-        setTimeout(()=>{
-            alertEl.classList.add('d-none')
-        },2000)
-    })
-
+            setTimeout(() => {
+                alertEl.classList.add("d-none");
+            }, 2000);
+        });
 });
 
 async function checkAuthState() {
@@ -69,28 +77,31 @@ async function checkAuthState() {
 
 logoutBtn.addEventListener("click", async function (e) {
     e.preventDefault();
+    localStorage.removeItem("signedIn")
     await signOut(auth);
 });
 
-readData('users')
-.then(data =>{
-    const users = convertData(data)
-    console.log(users);
-    usersTable.innerHTML = users.map((el, i) => `
+readData("users").then((data) => {
+    const users = convertData(data);
+    usersTable.innerHTML = users
+        .map(
+            (el, i) => `
     <tr>
         <td scope="row">${i + 1}</td>
         <td>${el.fullname}</td>
         <td>${el.email}</td>
     </tr>
-    `).join('')
-})
+    `
+        )
+        .join("");
+});
 
-listenForChanges('books', (data)=>{
-    console.log(data);
-    const books = convertData(data)
-    console.log(books);
+listenForChanges("books", (data) => {
+    const books = convertData(data);
 
-    booksTable.innerHTML = books.map((book,i)=>`
+    booksTable.innerHTML = books
+        .map(
+            (book, i) => `
     <tr>
     <td scope="row">${i + 1}</td>
     <td class="text-start">
@@ -101,28 +112,29 @@ listenForChanges('books', (data)=>{
         />
         ${book.title}
     </td>
-    <td>${book.desc.slice(0,50)}...</td>
+    <td>${book.desc.slice(0, 50)}...</td>
     <td>${book.category}</td>
     <td>${book.author}<i data-id="${book.id}" class="fa-solid fa-trash ps-1"></i></td>
 </tr>
-    `).join('')
+    `
+        )
+        .join("");
+});
 
-})
-
-booksTable.addEventListener('click', (e)=>{
-    let isTrashIcon = e.target.classList.contains('fa-trash')  
-    if(isTrashIcon){
-        const bookId = e.target.dataset.id
+booksTable.addEventListener("click", (e) => {
+    let isTrashIcon = e.target.classList.contains("fa-trash");
+    if (isTrashIcon) {
+        const bookId = e.target.dataset.id;
         // console.log(e.target.dataset.id);
-        deleteData('books/',bookId)
+        deleteData("books/", bookId);
     }
-})
+});
 
-readData('contacts')
-.then((data) =>{
-    const contactInfo = convertData(data)
-    console.log(contactInfo);
-    contactTable.innerHTML = contactInfo.map((el, i) =>`
+readData("contacts").then((data) => {
+    const contactInfo = convertData(data);
+    contactTable.innerHTML = contactInfo
+        .map(
+            (el, i) => `
         <tr>
             <td scope="row">${i + 1}</td>
             <td>${el.name_Input}</td>
@@ -131,5 +143,6 @@ readData('contacts')
             <td>${el.phone_Input}</td>
         </tr>
         `
-    ).join('')
-})
+        )
+        .join("");
+});
