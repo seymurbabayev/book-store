@@ -157,7 +157,7 @@ function renderNew(snaphot){
     <span>New</span>
      <h5>${item.title}</h5>
      <p>${item.author}</p>
-      <a href="#">Read more</a>
+      <a href="book.html?id=${item.id}">Read more</a>
       </div>
    </div>
     `
@@ -181,7 +181,7 @@ function renderBestSeller(snaphot){
     <span >${item.newcheck === true ? 'New' : ''}</span>
      <h5>${item.title}</h5>
      <p>${item.author}</p>
-      <a href="#">Read more</a>
+      <a href="book.html?id=${item.id}">Read more</a>
       </div>
    </div>
     `

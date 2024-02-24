@@ -48,16 +48,7 @@ function convertDatas(d) {
 
   return myNewData;
 }
-// readData("/category")
-// .then((data) =>{
 
-
-// const categorys = Object.values(data)
-
-//   console.log(categorys);
-//   renderCatalog(categorys)
-// })
-// .catch((error) => console.error("Error reading data:", error));
 
 
 
