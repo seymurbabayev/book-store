@@ -38,13 +38,14 @@
         </ul>
   
         <div class="header_join">
-          <button id="join-btn" class="header_join_btn">
+          <p id="join-btn" class="header_join_btn">
             <img src="./src/assets/images/user.svg" alt="">
             Join us
           </button>
         </div>
-      </nav>
-
+     
+        
+    
       <div id="modal_body" class="modal-join">
         
         <div class="modal_main">
@@ -64,6 +65,40 @@
           </form>
         </div>
       </div>
+    
+      <div class="header_mobile_body">
+        <div id="header_menu" class="header_menu">
+          <img src="./src/assets/images/menu.svg" alt="icon" />
+        </div>
+        <div id="overlay" class="overlay">
+          <img
+            id="close_icon"
+            class="close_icon"
+            src="./src/assets/images/close.svg"
+            alt=""
+          />
+          <div class="menu_list">
+            <ul class="menu_nav">
+              <li class="menu_item">
+                <a href="./index.html"> Home </a>
+              </li>
+              <li class="menu_item">
+                <a href="./src/pages/catalog.html"> Catalog </a>
+              </li>
+              <li class="menu_item">
+                <a href="./src/pages/about.html"> About Store </a>
+              </li>
+              <li class="menu_item">
+                <a href="./src/pages/contact.html"> Contact Us </a>
+              </li>
+              <li class="menu_item">
+                <a href="./src/pages/search.html"> Search </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </nav>
     </header>
 
         <main class="home1_container">
@@ -198,7 +233,7 @@
       </p>
     </footer>
     
-    
+    <script src="./src/js/hamburger-menu.js"></script>
     <script type="module" src="./src/js/JoinUspage.js"></script> 
     <script type="module" src="./src/js/home-page.js"></script>
   </body>
