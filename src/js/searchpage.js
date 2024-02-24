@@ -74,7 +74,7 @@ function renderBooks(books) {
       <div class="book_title" id="book_title_div">
         <h2 class="book_name" id="book_name_h2">${book.title}</h2>
         <p class="author" id="author_p">${book.author}</p>
-        <p class="title" id="title_p">${removeTags(book.desc)}
+        <p class="title" id="title_p">${book.desc}
         </p>
       </div>
      
@@ -87,31 +87,20 @@ function renderBooks(books) {
   swiper_div.innerHTML = swiperDiv.join('');
 }
 
-function removeTags(str) { 
-  if ((str===null) || (str==='')) 
-      return false; 
-  else
-      str = str.toString(); 
-
-  return str.replace( /(<([^>]+)>)/ig, '')
-}
 
 searchBtnEl.addEventListener('click', () => {
   const searchTerm = inputSearchEl.value.trim();
-  if(searchTerm.length == 0){
-    alert("Enter the book name")
-  }else{
-    searchBooks(searchTerm);
-  }
+ 
+  searchBooks(searchTerm);
 });
 
 // Firebase-dəki məlumatı səhifə yüklənərkən göstərmək üçün renderBooks funksiyasını buraya əlavə edirik
-// onValue(ref(database, 'books'), (snapshot) => {
-//   const data = snapshot.val();
-//   const books = Object.values(data);
+onValue(ref(database, 'books'), (snapshot) => {
+  const data = snapshot.val();
+  const books = Object.values(data);
 
-//   renderBooks(books);
-// });
+  renderBooks(books);
+});
 
 
 

@@ -255,6 +255,7 @@ td {
 /* Books section */
 .table-wrapper {
     max-height: 300px;
+    display: inline-block;
     overflow-y: auto;
     margin-bottom: 100px;
     scrollbar-width: none;

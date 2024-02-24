@@ -4,7 +4,7 @@ const newchek = document.querySelector("#new");
 const category = document.querySelector("#category")
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-import {  getDatabase, ref, get, set, push, child, onValue  } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
+import {  getDatabase, ref, get, set, child, onValue,  } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
 // import { createData } from "./firebase";
 
 
@@ -28,25 +28,16 @@ function writeSetData(path, data){
 
 }
 
-const create = (path, data) => {
-  const newRef = push(ref(database, path), data);
 
-  return newRef.key;
-};
 
-const readData = (path) => {
-   
-  
-  const dataRef = ref(database, path);
-  return get(dataRef).then((snapshot) => snapshot.val());
-};
+
 function convertData(d) {
   const newData = Object.entries(d);
 
-  const myNewData = newData.map((kicikArr) => {
+  const myNewData = newData.map((arr) => {
     const newObj = {
-      id: kicikArr[0],
-      ...kicikArr[1]
+      id: arr[0],
+      ...arr[1],
     };
 
     return newObj;
@@ -54,6 +45,7 @@ function convertData(d) {
 
   return myNewData;
 }
+
 function convertDatas(d) {
   const newData = Object.entries(d);
 
@@ -68,31 +60,21 @@ function convertDatas(d) {
 
   return myNewData;
 }
-readData("/books")
-.then((data) =>{
-  const desc = convertData(data);
-  renderAllBooks(desc);
-  renderBestSeller(desc);
-  renderNew(desc);
-})
-.catch((error) => console.error("Error reading data:", error));
 
 
-readData("/category")
-.then((data) =>{
-  const list = convertDatas(data);
-  renderCategorys(list)
 
 
-})
-.catch((error) => console.error("Error reading data:", error));
+onValue(ref(database, "category"), renderCategorys);
 
-function renderCategorys(list){
-   category.innerHTML = list.map((item)=>{
+
+
+function renderCategorys(snaphot){
+  const data = convertDatas(snaphot.val())
+   category.innerHTML = data.map((item)=>{
     return`
     
          <li>
-         <button type="button" class="catalog_categories" catID="${item.id}">${item.name}</button>
+         <button type="button" class="catalog_categories" catID="${item.name}">${item.name}</button>
         </li>
         
    
@@ -102,42 +84,39 @@ function renderCategorys(list){
   for(let i = 1; i < buttons.length; i++ ){
     buttons[i].addEventListener("click", function(){
       let id = buttons[i].getAttribute("catID")
-      getBook(id)
+      getBook(id);
     })
   }
+  return data
 
 }
 
 
-// function getBooks(list){
-  
-  
-// }
 
-function getBook(category_id) {
-  const db_ref = ref(database)
-  get(child(db_ref, 'books')).then((snapshot) => {
-      let book_data
+
+function getBook(categoryId) {
+  const dbRef = ref(database)
+  get(child(dbRef, 'books')).then((snapshot) => {
+      let bookData
       if (snapshot.exists()) {
           let dataArr = Object.entries(snapshot.val())
-          let data_list = dataArr.map((item) => {
+          let dataList = dataArr.map((item) => {
               const newObj = {
                   id: item[0],
                   ... item[1],
               };
-              // console.log(newObj);
               return newObj
           })
-          let filtered_data = data_list.filter((book) => {
-              return book.category === category_id
+          let filteredData = dataList.filter((book) => {
+              return book.category === categoryId
           })
-          if (category_id) {
-              book_data = filtered_data
+          if (categoryId) {
+              bookData = filteredData
           } else {
-              book_data = data_list
+              bookData = dataList
           }
         
-          let data_list_map = book_data.map((item, index) => {
+          let dataListMap = bookData.map((item, index) => {
               return `
               <div class="swiper-slide">
                   <div class="catalog_box_item">
@@ -146,14 +125,13 @@ function getBook(category_id) {
             <p>${item.author}</p>
             <h5>${item.title}</h5>
             <a href="../pages/book.html" >Read more</a>
-
                   </div>
               </div>
       `
           }).join("")
-          allBooks.innerHTML = data_list_map;
+          allBooks.innerHTML = dataListMap;
           swiperAll.update()
-          return data_list
+          return dataList
       }
   }).catch((err) => {
       console.log(err, 'err')
@@ -161,21 +139,14 @@ function getBook(category_id) {
 }
 getBook()
 
-function renderAllBooks(list){
-    allBooks.innerHTML = list.map(item =>
-        `<div class="swiper-slide" >
-        <div class="catalog_box_item">
-            <img src="${item.image}" alt="">
-            <span>${item.newcheck === true ? 'New' : ''}</span>
-            <h5>${item.title}</h5>
-            <p>${item.author}</p>
-            <a href="../pages/book.html" >Read more</a>
-        </div>
-    </div> `).join("")
-    swiperAll.update()
-}
-function renderNew(datas){
-  const data = convertData(datas);
+
+
+onValue(ref(database, "books"), renderNew);
+onValue(ref(database, "books"), renderBestSeller);
+
+function renderNew(snaphot){
+
+  const data = convertData(snaphot.val());
   let filteredBooks = data.filter((book)=>{
     if (book.newcheck === true){
         return book
@@ -199,8 +170,8 @@ function renderNew(datas){
 }
 
 
-function renderBestSeller(datas){
-  const data = convertData(datas);
+function renderBestSeller(snaphot){
+  const data = convertData(snaphot.val());
   let filteredBooks = data.filter((book)=>{
     if (book.bestsellerbox === true){
         return book

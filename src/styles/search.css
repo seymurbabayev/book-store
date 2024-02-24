@@ -102,7 +102,6 @@ color: #720418c7;
 
 } 
 
-
 .box2 h2 {
 font-size: 24px;
 color:  #241400;
@@ -124,8 +123,8 @@ width: 95%;
 font-size: 12px;
 font-family: Montserrat;
 line-height: 196%;
-height: 225px;
-overflow-y: scroll;
+height: 200px;
+overflow-y: auto;
 padding-right: 4px;
 }
 
@@ -444,6 +443,5 @@ width: 55%;
     padding: 0px
   }
 }
-
 
 
