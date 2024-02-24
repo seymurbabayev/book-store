@@ -1,87 +1,5 @@
-// search function start
-const srcInput = document.querySelector("#srcInput");
-const srcBtn = document.querySelector("#srcBtn");
-const srcResult = document.querySelector("#srcResult");
-const srcList = document.querySelector("#srcList");
-// search function end
-
-// firebase start
-const bookForm = document.querySelector('#bookForm')
-const bookTitle = document.querySelector("#bookTitle");
-const bookAuthor = document.querySelector("#bookAuthor");
-const bookImage = document.querySelector("#bookImage");
-const bookDesc = document.querySelector("#bookDesc");
-const addBtn = document.querySelector("#addBtn");
-const besteller = document.querySelector("#checkbox");
-const newchek = document.querySelector("#new");
-
-const bookTypeList = document.querySelector("#bookTypeList");
-
-// search function start
-srcInput.addEventListener("keypress", (event) => {
-    if (event.key === "Enter") {
-        event.preventDefault();
-        srcBtn.click();
-    }
-});
-
-srcBtn.addEventListener("click", async function () {
-    const title = srcInput.value;
-    if(!title){
-        alert('Search field is empty')
-        return
-    }
-    await myPromise(title);
-    srcResult.classList.remove('d-none');
-    srcInput.value = "";
-});
-
-async function myPromise(bookTitle) {
-    try {
-        let url = `https://www.googleapis.com/books/v1/volumes?q=${bookTitle}`;
-        const response = await fetch(url);
-        const data = await response.json();
-        renderItem(data);
-
-        srcResult.style.backgroundColor = "#f1f0f0";
-        srcResult.style.height = "250px";
-    } catch (err) {
-        console.log(err);
-        if (err) {
-            srcResult.style.backgroundColor = "#d9534f";
-            srcResult.style.height = "50px";
-            srcList.innerHTML = `<li>${bookTitle.toUpperCase()} was not found</li>`;
-            setTimeout(() => {
-                srcList.innerHTML = '';
-                srcResult.classList.add('d-none')
-            }, 2000)
-        }
-    }
-}
-
-function renderItem(data) {
-    const book = data.items;
-    console.log(book);
-    srcList.innerHTML = book
-        .map(
-            (item) => `
-    <li data-id=${item.id} class="search-result"><i class="far fa-clock"></i>${item.volumeInfo.title}</li>`
-        )
-        .join("");
-}
-
-async function getBookByID(BookID) {
-    try {
-        const response = await fetch(`https://www.googleapis.com/books/v1/volumes/${BookID}`);
-        const data = await response.json();
-        return data;
-    } catch (err) {
-        console.log("err", err);
-    }
-}
-
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-import { getDatabase, ref, push, set, get, update, remove, onValue } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
+import { getDatabase, ref, push, set, get, remove, onValue } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
 import {getAuth, signInWithEmailAndPassword, signOut, onAuthStateChanged, } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
 
 const firebaseConfig = {
@@ -101,7 +19,7 @@ const database = getDatabase(firebaseapp);
 const auth = getAuth(firebaseapp);
 
 // Create
-const createData = (path, data) => {
+export const createData = (path, data) => {
     const newRef = push(ref(database, path), data);
 
     return newRef.key;
@@ -146,45 +64,5 @@ export const deleteData = (path, id) => {
     const dataRef = ref(database, path + id);
     remove(dataRef)
 }
-
-srcList.addEventListener("click", async (e) => {
-    console.log(e.target.dataset.id);
-    const bookID = e.target.dataset.id;
-    const bookForm = await getBookByID(bookID);
-
-    bookTitle.value = bookForm.volumeInfo.title;
-    bookAuthor.value = bookForm.volumeInfo.authors.toString()
-    bookImage.value = bookForm.volumeInfo.imageLinks.thumbnail;
-    bookDesc.value = bookForm.volumeInfo.description;
-
-    srcResult.classList.add('d-none');
-  });
-
-  addBtn.addEventListener("click", function (e) {
-      e.preventDefault();
-
-      const bestsellerbox = besteller.checked;
-      const newcheck = newchek.checked;
-      const category = bookTypeList.value;
-
-      const title = bookTitle.value;
-      const author = bookAuthor.value;
-      const image = bookImage.value;
-      const desc = bookDesc.value;
-
-      const book = {
-          title,
-          author,
-          image,
-          desc,
-          category,
-          newcheck,
-          bestsellerbox,
-      };
-
-      createData("books", book);
-      bookForm.reset()
-      alert("added");
-  });
 
 export { auth, signInWithEmailAndPassword, signOut, onAuthStateChanged };

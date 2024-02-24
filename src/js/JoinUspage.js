@@ -31,7 +31,6 @@ let rejectBtn = document.querySelector("#rejectBtn");
 let modal_body = document.querySelector("#modal_body");
 
 const body = document.body;
-// let join_tbody = document.querySelector("#join_tbody")
 
 rejectBtn.addEventListener("click", function () {
     modal_body.classList.remove("show");
@@ -43,7 +42,6 @@ join_btn1.addEventListener("click", function () {
     body.style.overflow = "hidden";
 });
 
-// let id = 1
 join_btn?.addEventListener("click", function (e) {
     e.preventDefault();
 
@@ -59,30 +57,8 @@ join_btn?.addEventListener("click", function (e) {
         email_input.value = "";
         modal_body.classList.remove("show");
 
-        // console.log("userInfo", userInfo);
     }
-    // create("/users", userInfo )
-
-    // console.log(userInfo );
+    
     push(users, userInfo);
     alert("Added");
 });
-
-//firebase de users bolmesi yaratt
-
-// function render(){
-//   onValue(users, (snapshot) => {
-//     const data = snapshot.val();
-//     let dataToArr = Object.entries(data)
-//     let dataItem = dataToArr.map((item) => `
-//           <tr>
-//             <td class="mobil-id">${id++}</td>
-//             <td>${item[1].fullname}</td>
-//             <td>${item[1].email}</td>
-//           </tr>
-//         `
-//     ).join("")
-//     join_tbody ? join_tbody.innerHTML = dataItem   : null
-//   });
-// }
-// render()
