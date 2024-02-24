@@ -92,8 +92,6 @@ function renderCategorys(snaphot){
 }
 
 
-
-
 function getBook(categoryId) {
   const dbRef = ref(database)
   get(child(dbRef, 'books')).then((snapshot) => {
@@ -115,7 +113,7 @@ function getBook(categoryId) {
           } else {
               bookData = dataList
           }
-        
+          console.log('all', bookData);
           let dataListMap = bookData.map((item, index) => {
               return `
               <div class="swiper-slide">
@@ -124,7 +122,7 @@ function getBook(categoryId) {
                      <span> ${item.newcheck === true ? 'New' : ''}</span>
             <p>${item.author}</p>
             <h5>${item.title}</h5>
-            <a href="../pages/book.html" >Read more</a>
+            <a href="book.html?id=${item.id}" >Read more</a>
                   </div>
               </div>
       `
@@ -152,7 +150,7 @@ function renderNew(snaphot){
         return book
     }
   })
-
+  console.log('new', filteredBooks);
   newchek.innerHTML = filteredBooks.map((item)=>{
     return `
     <div class="swiper-slide">
@@ -177,7 +175,7 @@ function renderBestSeller(snaphot){
         return book
     }
   })
-
+  console.log('best', filteredBooks);
   bestseller.innerHTML = filteredBooks.map((item)=>{
     return `
     <div class="swiper-slide">

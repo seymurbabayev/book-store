@@ -1,10 +1,36 @@
-
-
+import { readData, convertData } from "./firebase.js";
 
 let comment_input = document.querySelector(".input-comment");
 let send_icon = document.querySelector(".send-icon");
-
 let comment = document.querySelector(".anonim-comments");
+
+
+
+window.addEventListener('load', function(){
+  const url = window.location.search
+  const id = url.split('=')[1]
+
+  readData(`books/${id}`)
+  .then(data=>{
+    renderBookWithID(data)
+  })
+})
+
+function renderBookWithID(obj){
+  const bookInfo = document.querySelector('#bookInfo')
+  bookInfo.innerHTML = `
+  <div class="description">
+    <div class="year-book">2017</div>
+    <div><h1 class="book-name">${obj.title}</h1></div>
+    <div class="history-add"><p>2 days ago added</p></div>
+    <div class="author-name"><p>${obj.author}</p></div>
+    <div class="book-title">${obj.desc}</div>
+  </div>
+  <div class="img-container"><img src="${obj.image}" alt=""></div>
+  `
+  console.log(obj);
+  
+}
 
 send_icon.addEventListener("click", async function (e) {
   e.preventDefault(); 
@@ -79,44 +105,6 @@ function getTimeDifferenceInDays(date) {
   return daysDifference;
 }
 
-// let book_url = window.location.hash;
-// let book_length = book_url.length;
-// let book_id = book_url.slice(4, book_length);
-// let book_page = document.querySelector("#book_page");
-// let renderBookPageDetails = () => {
-//   // onValue(ref(database, 'books'),(snapshot) => {
-//     // const bookData = snapshot.val();
-//     // let bookDataToArr = Object.entries(bookData);
-//     let bookPageArr = bookDataToArr.filter((item) => item[0] == book_id);
-//     let bookPage = bookPageArr.map((item) => {
-//       const daysAgo = getTimeDifferenceInDays(item[1].book_date);
-
-//       return `
-//         <div class="section-1-design"> 
-//           <div><a class="btn-back" href="../pages/catalog.html"> < BACK</a></div>
-//           <div class="year-book">${item[1].book_apperance.slice(0, 4)}</div>
-//           <div><h1 class="book-name">${item[1].book_title}</h1></div>
-//           <div class="history-add"><p>${daysAgo}</p></div>
-//           <div class="author-name"><p>${item[1].book_author}</p></div>
-//           <div class="book-title"> <p>${item[1].book_desc}</p> </div>
-//           <div><img src="${item[1].book.image}" alt=""></div>
-//         </div>
-
-//         <div class="section-2-design">
-//           <div class="send">
-//             <input class="input-comment" type="text" placeholder="your anonim comment...">
-//             <div class="send-icon"> <img src="../assets/images/sendicon.svg" alt=""></div>
-//           </div>
-//           <!-- Other content in section-2 goes here -->
-//         </div>
-        
-//       `;
-//     });
-//     book_page.innerHTML = bookPage.join('');
-//   };
-
-
-// renderBookPageDetails();
 
 //Get post eleyen zaman Try icinde Request atir 
 async function getPosts() {
