@@ -1,7 +1,6 @@
 import { readData } from "./firebase.js";
 
 const linkGroup = document.querySelector("#linkGroup")
-<<<<<<< HEAD
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
 import {  getDatabase, ref, get, set, push, onValue, child  } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
 // import { createData } from "./firebase";
@@ -34,12 +33,7 @@ const create = (path, data) => {
   return newRef.key;
 };
 
-const readData = (path) => {
-   
-  
-  const dataRef = ref(database, path);
-  return get(dataRef).then((snapshot) => snapshot.val());
-};
+
 function convertDatas(d) {
   const newData = Object.entries(d);
 
@@ -56,8 +50,7 @@ function convertDatas(d) {
 }
 // readData("/category")
 // .then((data) =>{
-=======
->>>>>>> 0f82ecc2a16b2210fe242b99bb797cab658ac589
+
 
 // const categorys = Object.values(data)
 
@@ -66,7 +59,7 @@ function convertDatas(d) {
 // })
 // .catch((error) => console.error("Error reading data:", error));
 
-<<<<<<< HEAD
+
 
 onValue(ref(database, "category"), renderCatalog)
 
@@ -78,6 +71,6 @@ function renderCatalog (list){
     `).join("");
     return data
     
-=======
+
  
 }
