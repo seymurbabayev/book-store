@@ -277,7 +277,12 @@ td {
     margin-bottom: 300px;
 }
 
-/* Tablet and Mobile screens */
+@media only screen and (max-width: 768px) {
+    .desk-menu-container {
+        display: none;
+    }
+}
+
 @media only screen and (max-width: 576px) {
     .logo {
         width: min(50%, 283px);
