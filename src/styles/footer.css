@@ -163,6 +163,7 @@ footer{
 
   .social-media {
     gap: 17px;
+    margin-top: unset;
   }
 
   .social-title {

@@ -1,5 +1,5 @@
 import { auth, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "./firebase.js";
-import { readData, listenForChanges, convertData, deleteData } from "./firebase.js";
+import { createData, readData, listenForChanges, convertData, deleteData } from "./firebase.js";
 
 const usernameInp = document.querySelector(".username-input");
 const passwordInp = document.querySelector(".password-input");
@@ -8,6 +8,22 @@ const logoutBtn = document.querySelector("#logoutBtn");
 
 const adminLoginScreen = document.querySelector(".admin-login");
 const adminPanelScreen = document.querySelector(".admin-panel");
+
+const srcInput = document.querySelector("#srcInput");
+const srcBtn = document.querySelector("#srcBtn");
+const srcResult = document.querySelector("#srcResult");
+const srcList = document.querySelector("#srcList");
+
+const bookForm = document.querySelector('#bookForm')
+const bookTitle = document.querySelector("#bookTitle");
+const bookAuthor = document.querySelector("#bookAuthor");
+const bookImage = document.querySelector("#bookImage");
+const bookDesc = document.querySelector("#bookDesc");
+const addBtn = document.querySelector("#addBtn");
+const besteller = document.querySelector("#checkbox");
+const newchek = document.querySelector("#new");
+
+const bookTypeList = document.querySelector("#bookTypeList");
 
 const booksTable = document.querySelector("#booksTable");
 const contactTable = document.querySelector("#contactTable");
@@ -26,6 +42,7 @@ window.addEventListener("load", function () {
     checkAuthState();
 });
 
+// Sign In functionality
 joinBtn.addEventListener("click", async function (e) {
     e.preventDefault();
     const username = usernameInp.value.trim();
@@ -75,12 +92,116 @@ async function checkAuthState() {
     });
 }
 
+// LogOut functionality
 logoutBtn.addEventListener("click", async function (e) {
     e.preventDefault();
     localStorage.removeItem("signedIn")
     await signOut(auth);
 });
 
+// Search a book 
+srcInput.addEventListener("keypress", (event) => {
+    if (event.key === "Enter") {
+        event.preventDefault();
+        srcBtn.click();
+    }
+});
+
+srcBtn.addEventListener("click", async function () {
+    const title = srcInput.value;
+    if(!title){
+        alert('Search field is empty')
+        return
+    }
+    await myPromise(title);
+    srcResult.classList.remove('d-none');
+    srcInput.value = "";
+});
+
+async function myPromise(bookTitle) {
+    try {
+        let url = `https://www.googleapis.com/books/v1/volumes?q=${bookTitle}`;
+        const response = await fetch(url);
+        const data = await response.json();
+        renderItem(data);
+
+        srcResult.style.backgroundColor = "#f1f0f0";
+        srcResult.style.height = "250px";
+    } catch (err) {
+        console.log(err);
+        if (err) {
+            srcResult.style.backgroundColor = "#d9534f";
+            srcResult.style.height = "50px";
+            srcList.innerHTML = `<li>${bookTitle.toUpperCase()} was not found</li>`;
+            setTimeout(() => {
+                srcList.innerHTML = '';
+                srcResult.classList.add('d-none')
+            }, 2000)
+        }
+    }
+}
+
+function renderItem(data) {
+    const book = data.items;
+    srcList.innerHTML = book.map((item) => `
+    <li data-id=${item.id} class="search-result"><i class="far fa-clock"></i>${item.volumeInfo.title}</li>`
+        )
+        .join("");
+}
+
+// Fetch a book
+async function getBookByID(BookID) {
+    try {
+        const response = await fetch(`https://www.googleapis.com/books/v1/volumes/${BookID}`);
+        const data = await response.json();
+        return data;
+    } catch (err) {
+        console.log("err", err);
+    }
+}
+
+// Select a Book from the list
+srcList.addEventListener("click", async (e) => {
+    const bookID = e.target.dataset.id;
+    const bookForm = await getBookByID(bookID);
+
+    bookTitle.value = bookForm.volumeInfo.title;
+    bookAuthor.value = bookForm.volumeInfo.authors.toString()
+    bookImage.value = bookForm.volumeInfo.imageLinks.thumbnail;
+    bookDesc.value = bookForm.volumeInfo.description;
+
+    srcResult.classList.add('d-none');
+  });
+
+//   Add a Book to Firebase
+  addBtn.addEventListener("click", function (e) {
+      e.preventDefault();
+
+      const bestsellerbox = besteller.checked;
+      const newcheck = newchek.checked;
+      const category = bookTypeList.value;
+
+      const title = bookTitle.value;
+      const author = bookAuthor.value;
+      const image = bookImage.value;
+      const desc = bookDesc.value;
+
+      const book = {
+          title,
+          author,
+          image,
+          desc,
+          category,
+          newcheck,
+          bestsellerbox,
+      };
+
+      createData("books", book);
+      bookForm.reset()
+      alert("added");
+  });
+
+// Join us Table
 readData("users").then((data) => {
     const users = convertData(data);
     usersTable.innerHTML = users
@@ -96,6 +217,7 @@ readData("users").then((data) => {
         .join("");
 });
 
+// Books Table
 listenForChanges("books", (data) => {
     const books = convertData(data);
 
@@ -121,6 +243,7 @@ listenForChanges("books", (data) => {
         .join("");
 });
 
+// Delete a book
 booksTable.addEventListener("click", (e) => {
     let isTrashIcon = e.target.classList.contains("fa-trash");
     if (isTrashIcon) {
@@ -130,6 +253,7 @@ booksTable.addEventListener("click", (e) => {
     }
 });
 
+// Contacts table
 readData("contacts").then((data) => {
     const contactInfo = convertData(data);
     contactTable.innerHTML = contactInfo
