@@ -1,4 +1,4 @@
-import { readData, convertData } from "./firebase.js";
+import { readData } from "./firebase.js";
 
 let comment_input = document.querySelector(".input-comment");
 let send_icon = document.querySelector(".send-icon");
@@ -40,20 +40,7 @@ send_icon.addEventListener("click", async function (e) {
     bookId: 'salam',
 };
    const response = await createPost (commentData)
-  //  console.log(response);
-  // let listItem = `
-  //   <div class="comment">
-  //     <div class="anonim-side">
-  //       <div class="user"><p>anonim:</p></div>
-  //       <div><p>${getCurrentTime()}</p></div>
-  //     </div>
-  //     <div class="comment-title"><p>${comment_input.value}</p></div>
-  //   </div>
-  // `;
-  // postla yaz gonder api a komment yazilan hisseni inputda yazilan  gonder ora 
-  // sehife yuklenen anda hemin get post funksiyasi cagirilir comment.container innerhtml'ine menimset
 
-  // comments_container.innerHTML += listItem;
   comment_input.value = "";
   renderComment()
 });
@@ -85,9 +72,7 @@ return `
   }).join('');
   comment.innerHTML = bookPage;
   
-  // console.log(response);
 }
-// renderComment()
 
 
 function getCurrentTime() {
@@ -122,7 +107,6 @@ async function getPosts() {
     console.log("Error: " + error);
   }
 }
-// getPosts();
 
 
 async function createPost(send) {
@@ -141,20 +125,3 @@ console.log(send);
     console.log("Error: " + error);
   }
 }
-// createPost();
-
-// function renderElements(data){
-
-
-
-// }
-
-
-
-
-
-
-
-
-
-

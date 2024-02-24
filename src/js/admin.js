@@ -1,5 +1,5 @@
 import { auth, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "./firebase.js";
-import { createData, readData, listenForChanges, convertData, deleteData } from "./firebase.js";
+import { createData, writeSetData, readData, listenForChanges, convertData, deleteData } from "./firebase.js";
 
 const usernameInp = document.querySelector(".username-input");
 const passwordInp = document.querySelector(".password-input");
@@ -24,6 +24,12 @@ const besteller = document.querySelector("#checkbox");
 const newchek = document.querySelector("#new");
 
 const bookTypeList = document.querySelector("#bookTypeList");
+
+// About store 
+const aboutBookTitle = document.querySelector("#aboutBookTitle");
+const aboutBookImage = document.querySelector("#aboutBookImage");
+const aboutBookDesc = document.querySelector("#aboutBookDesc");
+const aboutAddBtn = document.querySelector("#aboutAddBtn");
 
 const booksTable = document.querySelector("#booksTable");
 const contactTable = document.querySelector("#contactTable");
@@ -200,6 +206,27 @@ srcList.addEventListener("click", async (e) => {
       bookForm.reset()
       alert("added");
   });
+
+// Add About store Info
+aboutAddBtn?.addEventListener("click", function (e) {
+    e.preventDefault();
+    const aboutTitle = aboutBookTitle.value;
+    const aboutImage = aboutBookImage.value;
+    const aboutDesc = aboutBookDesc.value;
+    const form = {
+        aboutTitle,
+        aboutImage,
+        aboutDesc,
+    };
+
+    writeSetData("/about", form);
+    alert("Added");
+
+    aboutBookTitle.value = ''
+    aboutBookImage.value = ''
+    aboutBookDesc.value = ''
+
+});
 
 // Join us Table
 readData("users").then((data) => {

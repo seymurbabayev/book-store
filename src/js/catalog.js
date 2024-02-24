@@ -113,7 +113,6 @@ function getBook(categoryId) {
           } else {
               bookData = dataList
           }
-          console.log('all', bookData);
           let dataListMap = bookData.map((item, index) => {
               return `
               <div class="swiper-slide">
@@ -150,7 +149,6 @@ function renderNew(snaphot){
         return book
     }
   })
-  console.log('new', filteredBooks);
   newchek.innerHTML = filteredBooks.map((item)=>{
     return `
     <div class="swiper-slide">
@@ -175,7 +173,6 @@ function renderBestSeller(snaphot){
         return book
     }
   })
-  console.log('best', filteredBooks);
   bestseller.innerHTML = filteredBooks.map((item)=>{
     return `
     <div class="swiper-slide">
