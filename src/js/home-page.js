@@ -1,6 +1,6 @@
 const linkGroup = document.querySelector("#linkGroup")
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-import {  getDatabase, ref, get, set, push  } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
+import {  getDatabase, ref, get, set, push, onValue, child  } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
 // import { createData } from "./firebase";
 
 
@@ -37,52 +37,41 @@ const readData = (path) => {
   const dataRef = ref(database, path);
   return get(dataRef).then((snapshot) => snapshot.val());
 };
-function convertData(d) {
+function convertDatas(d) {
   const newData = Object.entries(d);
 
   const myNewData = newData.map((kicikArr) => {
-    const newObj = {
-      id: kicikArr[0],
-      ...kicikArr[1]
-    };
+      const newObj = {
+          id: kicikArr[0],
+          name: kicikArr[1],
+      };
 
-    return newObj;
+      return newObj;
   });
 
   return myNewData;
 }
+// readData("/category")
+// .then((data) =>{
 
-readData("/category")
-.then((data) =>{
+// const categorys = Object.values(data)
 
-const categorys = Object.values(data)
+//   console.log(categorys);
+//   renderCatalog(categorys)
+// })
+// .catch((error) => console.error("Error reading data:", error));
 
-  console.log(categorys);
-  renderCatalog(categorys)
-})
-.catch((error) => console.error("Error reading data:", error));
 
+onValue(ref(database, "category"), renderCatalog)
 
 function renderCatalog (list){
-  linkGroup.innerHTML = list.map(item =>
-    ` <div class="form-link"><a href="#">${item}</a></div>
+  const data = convertDatas(list.val()) 
+  linkGroup.innerHTML = data.map(item =>
+    ` <div class="form-link"><a href="./src/pages/catalog.html" catID="${item.name}">${item.name}</a></div>
                   
-    `).join("")
+    `).join("");
+    return data
+    
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
